@@ -55,6 +55,11 @@ app.post("/booktables",async (req,res)=>{
     console.log(booktable)
     res.status(200).json({data:booktable})
 })
+app.patch("/booktables/:id",async (req,res)=>{
+    const booktable = await Bookingtable.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    console.log(booktable)
+    res.status(200).json({data:booktable})
+})
 app.delete("/booktables/:id",async (req,res)=>{
     const booktable = await Bookingtable.findByIdAndDelete(req.params.id)
     console.log(booktable)

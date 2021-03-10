@@ -1,0 +1,125 @@
+.Bookatable_Outerbox{
+    width:70%;
+    margin:auto;
+    border:2px solid black;
+    display:flex
+}
+.Bookatable_innerbox1{
+    width:30%;
+    border:1px solid red;
+    margin:10px
+}
+.Bookatable_innerbox2{
+    width:75%;
+    border:1px solid red;
+    margin:10px
+}
+.Bookatable_Girf{
+    width:90%;
+    margin:auto;
+   
+    display:flex;
+   
+    /* padding:10px; */
+    justify-content: center;
+    align-items: center;
+}
+.Bookatable_Girf_inner{
+    width:50%;
+    margin:auto;
+   
+    display:flex;
+   
+    justify-content: center;
+    align-items: center;
+}
+.Bookatable_girf{
+    width:30%;
+    margin-right:20px;
+ 
+    display:flex;
+    padding:10px;
+    
+    
+}
+.Bookatable_New{
+    background-color: #FCBA02;
+    border-radius:10px 1px;
+    height:25px;
+    width:30%;
+    padding:10%;
+    padding-top:0%;
+    padding-bottom:0%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:12px;
+    color:white;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.Bookatable_Addicon{
+    width:40%;
+   margin-left:36.5%;
+   
+}
+
+
+.navBox {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height:0;
+    transition: all 1s;
+    clear:both;
+  }
+.height1{
+    height:fit-content;
+}
+.QuickFilters{
+    width:100%;
+    height:20%;
+    display:flex;
+    flex-direction: row;
+}
+.QuickFilters_text{
+    width:70%;
+    height:100%;
+    float:left;
+    color:grey;
+    font-weight:bold;
+    font-size:17px;
+    margin-left:5%
+}
+.QuickFilters_Addicon{
+    width:17%;
+    height:100%;
+    float:right;
+}
+.Bookatable_filter_input
+{
+    height:25px;
+    width:90%;
+    font-weight:bold;
+    font-size:14px;
+    font-weight:lighter;
+    
+}
+.Bookatable_div_input{
+    width:100%;
+    margin:auto;
+    height:30px;
+    color:grey;
+    margin-left:5%
+}
+.Bookatable_div_showmore{
+    width:100%;
+    margin-left:10%;
+    height:30px;
+    color:rgb(65, 63, 63);
+    text-decoration: underline;
+}
