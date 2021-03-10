@@ -1,0 +1,27 @@
+.container{
+    width: 70%;
+    margin: auto;
+    border: 1px solid red;
+}
+
+.image{
+    width: 50%
+}
+.image image{
+    /* height: ; */
+    width: 780px;
+}
+.info_header{
+    padding: 5px;
+}
+.info_header h1{
+    font-size: 22px;
+    /* padding: 10px; */
+    margin: 0;
+}
+
+.info_header p{
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+}

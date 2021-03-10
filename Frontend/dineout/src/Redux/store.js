@@ -1,7 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import { restaurantDetailReducer } from "./DetailPage/detailPageReducer";
 
-const rootReducer = combineReducers({ redcuers });
+const rootReducer = combineReducers({
+  restaurantDetail: restaurantDetailReducer,
+});
 
 let composeEnhancers = compose;
 

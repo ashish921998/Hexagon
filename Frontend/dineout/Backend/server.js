@@ -45,6 +45,7 @@ const booktableSchema = new mongoose.Schema({
         }
 )
 const Bookingtable = mongoose.model("bookingtable",booktableSchema)
+
 app.get("/booktables",async (req,res)=>{
     const booktables = await Bookingtable.find({}).lean().exec()
     console.log(booktables)
