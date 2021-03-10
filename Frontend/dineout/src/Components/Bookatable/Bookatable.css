@@ -1,16 +1,16 @@
 .Bookatable_Outerbox{
-    width:70%;
+    width:93%;
     margin:auto;
     border:2px solid black;
     display:flex
 }
 .Bookatable_innerbox1{
-    width:30%;
+    width:25%;
     border:1px solid red;
     margin:10px
 }
 .Bookatable_innerbox2{
-    width:75%;
+    width:83%;
     border:1px solid red;
     margin:10px
 }

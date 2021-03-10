@@ -3,7 +3,19 @@ import "./Bookatable.css";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import {quickfilters_datalist,cuisines_datalist,tags_datalist,features_datalist,dineoutpassport_datalist} from "./Bookatable_search_list"
+import {Tabledisplaydata} from "./Bookatable_display"
+import { useSelector, useDispatch } from "react-redux"
+import { getRestaurant } from '../../Redux/DetailPage/detailPageActionsTypes'
+
 const Bookatable = () => {
+    const restaurantData = useSelector((store) => store.restaurantDetail.restaurantData)
+    console.log(restaurantData)
+
+    const dispatch = useDispatch()
+    React.useEffect(() => {
+        dispatch(getRestaurant())
+    }, [dispatch])
+
   const [toggle1, setToggle1] = useState(false);
   const expand1 = toggle1 ? "height1" : "";
   const [toggle2, setToggle2] = useState(false);
@@ -290,9 +302,9 @@ const Bookatable = () => {
           </div>
           
         </div>
-        {searchText2!=="" && <div className="Bookatable_innerbox2">{data2.map((d,i)=> {
-           return <div>{d.list}</div>
-        })} </div>}
+        <div className="Bookatable_innerbox2">
+            <Tabledisplaydata restaurantData={restaurantData}/> 
+            </div>
       </div>
     </>
   );
