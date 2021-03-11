@@ -30,7 +30,7 @@ const getRestaurantFailure = (err) => {
 const getRestaurant = () => (dispatch) => {
   dispatch(getRestaurantRequest());
   return axios
-    .get("http://localhost:6678/booktables")
+    .get("http://localhost:6878/restaurants")
     .then((res) => {
       //   console.log(res);
       dispatch(getRestaurantSuccess(res.data.data));
