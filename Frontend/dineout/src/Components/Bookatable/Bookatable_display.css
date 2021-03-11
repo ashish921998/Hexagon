@@ -1,0 +1,48 @@
+.displaytable_card{
+  max-width: 260px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  height:400px;
+  border:1px solid lightgray;
+  float:left;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-left: 25px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.displaytable_imagesize{
+    height:200px;
+    width:100%;
+    border-radius: 7px 7px 0px 0px;
+}
+.displaytable_location,.displaytable_cuisines{
+    font-size:12px;
+    color:rgb(99, 98, 98);
+    text-align:left;
+    margin-left:10px
+}
+.displaytable_dineoutpay{
+    height:15px;
+    width:fit-content;
+    padding:5px;
+    border-radius: 3px;
+    background-color: #FFF4F4;
+    color:#F67373;
+    margin-left:10px;
+    font-size:13px;
+    margin-top: 10px;
+}
+.displaytable_offers{
+    margin-top: 20px;
+    color:#2B98F7;
+    font-weight:bold;
+    font-size:12px;
+    text-align: left;
+    margin-left:10px;
+}

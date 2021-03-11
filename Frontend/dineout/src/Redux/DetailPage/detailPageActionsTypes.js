@@ -3,6 +3,7 @@ import {
   GET_RESTAURANT_FAILURE,
   GET_RESTAURANT_REQUEST,
   GET_RESTAURANT_SUCCESS,
+ 
 } from "./detailPageActions";
 
 const getRestaurantRequest = () => {
@@ -24,6 +25,7 @@ const getRestaurantFailure = (err) => {
     error: err,
   };
 };
+
 
 const getRestaurant = () => (dispatch) => {
   dispatch(getRestaurantRequest());
