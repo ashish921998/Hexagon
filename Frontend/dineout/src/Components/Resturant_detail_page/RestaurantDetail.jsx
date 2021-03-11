@@ -10,9 +10,11 @@ export const RestaurantDetail = ({ restaurantName, image, location, timings, cui
             <div className={styles.container_info}>
                 <div className={styles.info_header}>
                     <h1>{restaurantName}</h1>
-                    <p>₹ {averageCost} | {[...cuisine.join(", ")]}</p>
+                    <p>₹ {averageCost} | {cuisine.map((cuisine) => (
+                        <span> {cuisine.cuisine} </span>
+                    ))}</p>
                     <p>{location}</p>
-                    <p>{timings}</p>
+                    <p>Time: {timings}</p>
                 </div>
                 <div>
 
