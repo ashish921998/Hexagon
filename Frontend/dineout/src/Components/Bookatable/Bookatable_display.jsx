@@ -12,9 +12,13 @@ const Tabledisplaydata = (props) => {
           Best Restaurants Near Me in Bangalore{" "}
         </h2>
         {restaurantData?.map((item, i) => {
-            let cuisine = restaurantData[i].cuisine.split(",")
-            cuisine[0]==="CUISINE" && cuisine.shift()
-            console.log(cuisine)
+          let cuisine = restaurantData[i].cuisine.split(",");
+          cuisine[0] === "CUISINE" && cuisine.shift();
+          console.log(
+            cuisine,
+            restaurantData[i].girf.length,
+            restaurantData[i].free_offer.length
+          );
           return (
             <>
               <div className="displaytable_card">
@@ -46,8 +50,34 @@ const Tabledisplaydata = (props) => {
                     {restaurantData[i].resturant_name}
                   </b>
                 </div>
-                <p className="displaytable_location"> {restaurantData[i].location}</p>
-                <div className="displaytable_cuisines"> {`${restaurantData[i].average_cost}(approx)|${[...cuisine]}`}</div>
+                <p className="displaytable_location">
+                  {" "}
+                  {restaurantData[i].location}
+                </p>
+                <div className="displaytable_cuisines">
+                  {" "}
+                  {`${restaurantData[i].average_cost}(approx)|${[...cuisine]}`}
+                </div>
+                {restaurantData[i].dineoutPay && (
+                  <div className="displaytable_dineoutpay">Dineout Pay</div>
+                )}
+                {restaurantData[i].girf.length > 0 &&
+                  restaurantData[i].free_offer.length &&
+                  restaurantData[i].resturant_name !== "The Big Barbeque" && (
+                    <div className="displaytable_offers">{`${
+                      restaurantData[i].girf.length > 0 &&
+                      restaurantData[i].girf.length
+                    } ${
+                      restaurantData[i].girf.length > 1 ? "deals" : "deal"
+                    } and ${
+                      restaurantData[i].free_offer.length > 0 &&
+                      restaurantData[i].free_offer.length
+                    } ${
+                      restaurantData[i].free_offer.length > 1
+                        ? "offers"
+                        : "offer"
+                    } are available`}</div>
+                  )}
               </div>
             </>
           );

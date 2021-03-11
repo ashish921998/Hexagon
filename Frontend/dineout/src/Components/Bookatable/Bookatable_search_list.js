@@ -31,7 +31,7 @@ let cuisines_datalist =[
       },
       {
         "id":"c4",
-        "list":"Desserts"
+        "list":"Multi-Cuisine"
       }
 ]
 let tags_datalist =[
@@ -88,5 +88,24 @@ let dineoutpassport_datalist =[
         "list":"Happy Hours"
       }
 ]
+let girf_datalist=[
+    {
+        "id":"g1",
+        "list":"50% Off Total Bill"
+      },
+      {
+          "id":"g2",
+          "list":"50% Off Food Bill"
+        },
+        {
+          "id":"g3",
+          "list":"50% Off Alchohol Bill"
+        },
+        {
+          "id":"g4",
+          "list":"50% Off Buffet"
+        }
+]
 
-module.exports = {quickfilters_datalist,cuisines_datalist,tags_datalist,features_datalist,dineoutpassport_datalist}
+
+module.exports = {quickfilters_datalist,cuisines_datalist,tags_datalist,features_datalist,dineoutpassport_datalist,girf_datalist}
