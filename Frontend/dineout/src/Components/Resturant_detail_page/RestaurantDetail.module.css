@@ -1,11 +1,13 @@
 .container{
-    width: 70%;
+    width: 62%;
     margin: auto;
     border: 1px solid red;
+    background-color: #fff;
+    margin-bottom: 12px;
 }
 
 .image{
-    width: 50%
+    width: 52%
 }
 .image image{
     /* height: ; */

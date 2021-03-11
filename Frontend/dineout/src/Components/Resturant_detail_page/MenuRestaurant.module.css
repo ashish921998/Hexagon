@@ -1,0 +1,26 @@
+.MenuRestaurant_Container{
+    width: 62%;
+    margin: 12px auto 12px;
+    background-color: #fff;
+}
+
+.MenuRestaurant_Head{
+    font-weight: 700;
+    padding: 20px 10px;
+    font-size: 18px;
+}
+
+.MenuRestaurant_Img{
+    width: 100px;
+}
+
+.MenuRestaurant_Img img{
+    width: 100%;
+}
+
+.menuNumber{
+    width: 100px;
+    background-color: black;
+    color: #fff;
+
+}

@@ -1,7 +1,8 @@
 .App {
   /* text-align: center; */
-  width: 1280px;
+  width: 100%;
   margin: auto;
+  background-color: #f4f4f4;
 }
 
 
