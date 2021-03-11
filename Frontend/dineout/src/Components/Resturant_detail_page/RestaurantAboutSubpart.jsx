@@ -1,0 +1,18 @@
+import React from 'react'
+import styles from "./RestaurantAboutSubpart.module.css"
+
+export const RestaurantAboutSubpart = (props) => {
+    if (props.type === "cuisine") {
+        return (
+            <div className={styles.subPart_container}>
+                <div className={styles.subPar_logo}>
+                    <img src="https://st1.dineout-cdn.co.in/images/uploads/misc/2019/Jun/19/group_30.png" alt="cuisine" />
+                </div>
+                <div className={styles.subpart_info}>
+                    <h4>CUISINE</h4>
+                    {/* <p>{props.data.join(" , ")}</p> */}
+                </div>
+            </div>
+        )
+    }
+}
