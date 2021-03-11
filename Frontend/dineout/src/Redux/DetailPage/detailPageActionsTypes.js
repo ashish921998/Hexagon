@@ -3,7 +3,6 @@ import {
   GET_RESTAURANT_FAILURE,
   GET_RESTAURANT_REQUEST,
   GET_RESTAURANT_SUCCESS,
- 
 } from "./detailPageActions";
 
 const getRestaurantRequest = () => {
@@ -26,11 +25,10 @@ const getRestaurantFailure = (err) => {
   };
 };
 
-
 const getRestaurant = () => (dispatch) => {
   dispatch(getRestaurantRequest());
   return axios
-    .get("http://localhost:6678/booktables")
+    .get("http://localhost:6878/restaurants")
     .then((res) => {
       //   console.log(res);
       dispatch(getRestaurantSuccess(res.data.data));
