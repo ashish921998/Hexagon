@@ -29,11 +29,6 @@ const Bookatablenew = () => {
     setRestaurantData(d);
   }, [d]);
 
-<<<<<<< HEAD
-  // const get = (url) => {
-  //   return axios.get(url).then((res) => setRestaurantData(res.data.data));
-  // };
-=======
   React.useEffect(() => {
     dispatch(filterRestaurant())
   }, [filters])
@@ -41,7 +36,6 @@ const Bookatablenew = () => {
   const get = (url) => {
     return axios.get(url).then((res) => setRestaurantData(res.data.data));
   };
->>>>>>> 59e05218a79d970e4b65304d0fb3e16488aa7148
 
   const [toggle1, setToggle1] = useState(false);
   const expand1 = toggle1 ? "height1" : "";
