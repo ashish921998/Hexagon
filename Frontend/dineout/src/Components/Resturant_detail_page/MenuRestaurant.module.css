@@ -10,14 +10,24 @@
     font-weight: 700;
     padding: 20px 10px;
     font-size: 18px;
+    text-align: center;
 }
 
 .MenuRestaurant_Img{
     width: 100px;
+    margin: auto;
+    /* position: relative; */
 }
 
 .MenuRestaurant_Img img{
     width: 100%;
+}
+
+.MenuRestaurant_Img img:hover{
+    transform: scale(5);
+    transition: transform .2s;
+    /* margin: 0 150px 0; */
+
 }
 
 .menuNumber{
