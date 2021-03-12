@@ -10,9 +10,9 @@ function App() {
     <div className="App">
         <Navbar />
         <Landing />
-        <Footer />
+        {/* <Footer /> */}
         <Bookatablenew />
-        {/* <DetailPage /> */}
+        <DetailPage />
     </div>
   );
 }

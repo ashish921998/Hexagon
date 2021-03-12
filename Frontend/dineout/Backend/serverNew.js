@@ -116,7 +116,18 @@ app.get("/restaurants", async (req, res) => {
     .exec();
   res.status(200).json({ data: datas });
 });
-
+app.patch("/restaurants/:id",async (req,res)=>{
+  const data = await Restaurant.findByIdAndUpdate(req.params.id,req.body,{new:true})
+  .populate("girfs")
+    .populate("cuisines")
+    .populate("tags")
+    .populate("dineoutpassport")
+    .populate("features")
+    .lean()
+    .exec();
+  // console.log(booktable)
+  res.status(200).json({data:data})
+})
 const girfSchema = new mongoose.Schema({
   icon: {
     type: String,
