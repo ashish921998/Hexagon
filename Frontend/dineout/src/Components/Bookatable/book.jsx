@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Bookatable.css";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import {Tabledisplaydata} from "./Bookatable_display"
+import { Tabledisplaydata } from "./Bookatable_display"
 import {
   cuisines_datalist,
   tags_datalist,
@@ -16,7 +16,7 @@ import { getRestaurant, filterRestaurant } from "../../Redux/DetailPage/detailPa
 import axios from "axios";
 
 
-const Bookatablenew = () => {
+const Book = () => {
   let d = useSelector((store) => store.restaurantDetail.restaurantData);
   const [restaurantData, setRestaurantData] = React.useState(d);
   const dispatch = useDispatch();
@@ -147,38 +147,39 @@ const Bookatablenew = () => {
   };
   const handlefilter = (e, type) => {
     let count = 0;
-    let index=0;
+    let index = 0;
     let filtersCopy = { ...filters }
-    let extra=[]
+    let extra = []
     if (type === "cuisines") {
       for (let i = 0; i < filters["cuisines"].length; i++) {
         if (filters["cuisines"][i] === e.target.value) {
           count++;
-          index=i;
-        }
+          index = i;
         }
       }
-      console.log(e.target.checked)
       if (count === 0) {
-       
+
         filtersCopy["cuisines"].push(e.target.value)
-        console.log(filtersCopy,"extra0")
+        console.log(filtersCopy, "extra0")
       }
-      else if(count>0)
-      {
-         for(let m=0;m<filtersCopy["cuisines"].length;m++)
-         {
-           if(m!==index)
-           {
-                extra.push(filtersCopy["cuisines"][m])
-           }
-         }
-         filtersCopy["cuisines"]=extra 
+      else if (count > 0) {
+        for (let m = 0; m < filtersCopy["cuisines"].length; m++) {
+          if (m !== index) {
+            extra.push(filtersCopy["cuisines"][m])
+          }
+        }
+        filtersCopy["cuisines"] = extra
+        setFilters(filtersCopy)
       }
-      console.log(filtersCopy,"extra1")
-    
+    }
+    console.log(e.target.checked)
+
+
+    console.log(filtersCopy, "extra1")
+    //  setFilters(filtersCopy)
     count = 0;
-    index=0;
+    index = 0;
+    extra = []
     if (type === "facilities") {
       for (let i = 0; i < filters["facilities"].length; i++) {
         if (filters["facilities"][i] === e.target.value) {
@@ -189,10 +190,22 @@ const Bookatablenew = () => {
         filtersCopy["facilities"].push(e.target.value)
 
       }
+      else if (count > 0) {
+        for (let m = 0; m < filtersCopy["facilities"].length; m++) {
+          if (m !== index) {
+            extra.push(filtersCopy["facilities"][m])
+          }
+        }
+        filtersCopy["facilities"] = extra
+        setFilters(filtersCopy)
+      }
+      console.log(filtersCopy, "extra1")
+      // setFilters(filtersCopy)
 
     }
     count = 0;
-    index=0;
+    index = 0;
+    extra = []
     if (type === "tags") {
       for (let i = 0; i < filters["tags"].length; i++) {
         if (filters["tags"][i] === e.target.value) {
@@ -203,10 +216,22 @@ const Bookatablenew = () => {
         filtersCopy["tags"].push(e.target.value)
 
       }
+      else if (count > 0) {
+        for (let m = 0; m < filtersCopy["tags"].length; m++) {
+          if (m !== index) {
+            extra.push(filtersCopy["tags"][m])
+          }
+        }
+        filtersCopy["tags"] = extra
+        setFilters(filtersCopy)
+      }
+      console.log(filtersCopy, "extra1")
+      // setFilters(filtersCopy)
 
     }
     count = 0;
-    index=0;
+    index = 0;
+    extra = []
     if (type === "dineoutpassport") {
       for (let i = 0; i < filters["dineoutpassport"].length; i++) {
         if (filters["dineoutpassport"][i] === e.target.value) {
@@ -217,10 +242,23 @@ const Bookatablenew = () => {
         filtersCopy["dineoutpassport"].push(e.target.value)
 
       }
+      else if (count > 0) {
+        for (let m = 0; m < filtersCopy["dineoutpassport"].length; m++) {
+          if (m !== index) {
+            extra.push(filtersCopy["dineoutpassport"][m])
+          }
+        }
+        filtersCopy["dineoutpassport"] = extra
+        setFilters(filtersCopy)
+      }
+      console.log(filtersCopy, "extra1")
+      // setFilters(filtersCopy)
+
 
     }
     count = 0;
-    index=0;
+    index = 0;
+    extra = []
     if (type === "girfs") {
       for (let i = 0; i < filters["girfs"].length; i++) {
         if (filters["girfs"][i] === e.target.value) {
@@ -231,28 +269,47 @@ const Bookatablenew = () => {
         filtersCopy["girfs"].push(e.target.value)
 
       }
+      else if (count > 0) {
+        for (let m = 0; m < filtersCopy["girfs"].length; m++) {
+          if (m !== index) {
+            extra.push(filtersCopy["girfs"][m])
+          }
+        }
+        filtersCopy["girfs"] = extra
+        setFilters(filtersCopy)
+      }
+      console.log(filtersCopy, "extra1")
+      // setFilters(filtersCopy)
 
     }
-    let temp = []
-    for (let key in filtersCopy) {
-      if (filtersCopy[key].length > 0) {
-        temp.push({ key: filtersCopy[key] })
-      }
-    }
+    console.log("filters", filters)
+    // let temp = []
+    // for (let key in filtersCopy) {
+    //   if (filtersCopy[key].length > 0) {
+    //     temp.push({ key: filtersCopy[key] })
+    //   }
+    // }
     setFilters(filtersCopy)
-    console.log("filters",filters)
-    let filtersObj={}
-   Object.keys(filters).map(filter=> {
-    //  debugger
-      if(filters[filter].length>0)
-      {
-        filtersObj[filter]=filters[filter]
+    console.log("filters", filters)
+    let filtersObj = {}
+    console.log("filterobj", filtersObj, filters)
+    Object.keys(filtersCopy).map(filter => {
+      //  debugger
+      if (filtersCopy[filter].length > 0) {
+        filtersObj[filter] = filtersCopy[filter]
       }
-      
+
     })
-    console.log("filterobj",filtersObj)
-    return axios.post(`http://localhost:6878/filters`, filtersObj)
-      .then((res) => setRestaurantData(res.data.data))
+    if (Object.keys(filtersObj).length !== 0) {
+      console.log("filterobj", "if", filtersObj)
+      return axios.post(`http://localhost:6878/filters`, filtersObj)
+        .then((res) => setRestaurantData(res.data.data))
+    } else {
+      console.log("filterobj", "else", filtersObj)
+      return dispatch(getRestaurant())
+    }
+
+
 
   }
   // console.log(restaurantData)
@@ -638,4 +695,4 @@ const Bookatablenew = () => {
   );
 };
 
-export default Bookatablenew;
+export default Book;
