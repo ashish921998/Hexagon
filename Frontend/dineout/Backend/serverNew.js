@@ -240,34 +240,20 @@ app.get("/dineoutpassports", async (req, res) => {
 // console.log(data);
 // res.status(200).json({ data });
 
-  app.post("/filters", async (req, res) => {
-    let queryObj = [];
-    Object.keys(req.body).map((key) => {
-      if (req.body[key].length > 0) {
-        let queryArray = [];
-        for (let i = 0; i < req.body[key].length; i++) {
-          queryArray.push({ [key]: req.body[key][i] });
-        }
-        let queryOrObject = { $or: queryArray };
-        queryObj.push(queryOrObject);
+app.post("/filters", async (req, res) => {
+  let queryObj = [];
+  Object.keys(req.body).map((key) => {
+    if (req.body[key].length > 0) {
+      let queryArray = [];
+      for (let i = 0; i < req.body[key].length; i++) {
+        queryArray.push({ [key]: req.body[key][i] });
       }
-    });
-    const datas = await Restaurant.find({
-      $and: queryObj,
-    })
-      .populate("girfs")
-      .populate("cuisines")
-      .populate("tags")
-      .populate("dineoutpassport")
-      .populate("features")
-      .lean()
-      .exec();
-    res.status(200).json({ data: datas });
+      let queryOrObject = { $or: queryArray };
+      queryObj.push(queryOrObject);
+    }
   });
-<<<<<<< HEAD
-  console.log(query);
   const datas = await Restaurant.find({
-    $and: query,
+    $and: queryObj,
   })
     .populate("girfs")
     .populate("cuisines")
@@ -276,12 +262,8 @@ app.get("/dineoutpassports", async (req, res) => {
     .populate("features")
     .lean()
     .exec();
-  console.log(datas);
   res.status(200).json({ data: datas });
 });
-=======
-
->>>>>>> f766bf6325aa3823f4a2d90666c8f6d63ea269ab
 
 async function start() {
   await connect();
