@@ -226,30 +226,7 @@ app.get("/dineoutpassports", async (req, res) => {
   res.status(200).json({ data: datas });
 });
 
-// let
-// let arr = [];
-// console.log(app);
-// const filterSchema = new mongoose.Schema({
-//   dineoutpassport: {
-//     type: String,
-//     required: true,
-//   },
-// });
-// const Dineoutpassport = mongoose.model(
-//   "dineoutpassport",
-//   dineoutpassportSchema
-// );
-// app.post("/filters", async (req, res) => {
-//   const data = req.body;
-//   arr.push(data);
-//   // console.log(data);
-// });
-// if (arr.length > 0) {
-// let arr = req.query;
-// console.log(req.query, "query params");
-// const data = await Restaurant.find({ $and: req.params.t }).lean().exec();
-// console.log(data);
-// res.status(200).json({ data });
+
 
 app.post("/filters", async (req, res) => {
   let queryObj = [];
@@ -326,6 +303,43 @@ app.post("/sorting",async (req,res)=>{
       .exec();
       res.status(200).json({ data: datas });
    }
+})
+//google
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  googleId:{
+    type: String,
+    required: true,
+  },
+  email:{
+    type: String,
+    required: true,
+  }
+});
+const User = mongoose.model("user", userSchema);
+app.post("/users",async (req,res)=>{
+  console.log(req.body["googleId"])
+  let check = req.body["googleId"]
+   let data1 = await User.find({googleId : {$eq:check}}).lean().exec()
+   if(data1.length===0)
+   {
+    const data = await User.create(req.body);
+    res.status(200).json({ data: data });
+   }
+   else{
+     res.status(200).send("no need")
+   }
+})
+app.get("/users",async(req,res)=>{
+  const data = await User.find({}).lean().exec()
+  res.status(200).json({ data: data });
 })
 async function start() {
   await connect();
