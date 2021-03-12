@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   background-color: white;
-  z-index: 2;
+  z-index: 1000000000000000000000000000000000000;
 }
 
 .flex {

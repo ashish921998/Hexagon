@@ -5,8 +5,9 @@
     position: relative;
     top: 12px;
     left: 400px;
-    background-color: transparent;
+    /* background-color: transparent; */
     height: 500px;
+    background-color: #fff;
     box-shadow: 0 0 28px -1px rgb(0 0 0 / 15%);
 }
 
