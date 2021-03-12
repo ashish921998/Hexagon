@@ -2,8 +2,8 @@ import React from "react";
 import { GoogleLogin } from "react-google-login";
 import axios from "axios"
 function Google() {
-  const [des,setDes]=React.useState("")
-  console.log(des.profileObj,"des")
+  const [des, setDes] = React.useState("")
+  console.log(des.profileObj, "des")
   return (
     <div>
       <GoogleLogin
@@ -11,8 +11,8 @@ function Google() {
         buttonText="Google"
         onSuccess={(res) => {
           setDes(res)
-          return axios.post("http://localhost:6878/users",res.profileObj)
-                 .then((res)=>console.log(res))
+          return axios.post("http://localhost:6878/users", res.profileObj)
+            .then((res) => console.log(res))
         }}
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
