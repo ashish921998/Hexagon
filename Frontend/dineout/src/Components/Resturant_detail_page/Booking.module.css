@@ -1,0 +1,134 @@
+.container{
+    width: 380px;
+    border: 1px solid red;
+    /* margin-right: 150px; */
+    position: relative;
+    top: 12px;
+    left: 400px;
+    background-color: transparent;
+    height: 500px;
+    box-shadow: 0 0 28px -1px rgb(0 0 0 / 15%);
+}
+
+.container_head{
+    text-align: center;
+    background-color: #000;
+    padding: 15px;
+    border-radius: 5px 5px 0px  0px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 16px;
+}
+
+.content_head{
+    background: #fff;
+    padding: 20px 15px 15px;
+    height: 430px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.calender_block{
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636363;
+}
+
+.month_name{
+    width: 50px;
+    text-align: center;
+    color: #fff;
+    background-color: #2b98f7;
+    padding: 20px 10px;
+    height: 52px;
+    border-radius: 3px 0 0 3px;
+    position: relative;
+}
+
+.month{
+    padding: 1px 0;
+    margin-bottom: 5px;
+    font-size: 8px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    background-color: #0b5b8f;
+    display: block;
+}
+
+.calender_block_head{
+    display: flex;
+}
+
+.calender_block{
+    width: 300px;
+}
+
+.slots_header{
+    box-shadow: 0 0 14px 0 rgb(0 0 0 / 16%);
+    background-color: #fff;
+}
+
+.guest_details_head{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.guest_details_count{
+    display: flex;
+    /* margin-left: 10px; */
+}
+
+.visitorsCount{
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 22px;
+    line-height: 22px;
+}
+
+.visitorCountOperation{
+    width: 22px;
+    height: 22px;
+    line-height: 16px;
+    border: 1px solid #2b98f7;
+    border-radius: 50%;
+    color: #2b98f7;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.guest_details_input{
+    border-color: #757575;
+    background-color: #f1f1f1;
+    /* border: none; */
+    /* margin: auto; */
+    text-align: center;
+}
+
+.guest_details_input input{
+    font-size: 12px;
+    height: 40px;
+    color: #121212;
+    margin: 5px 0px;
+    padding: 6px 79px;
+    background-color: #fefefe;
+    border: none;
+    outline: none;
+}
+
+.data_collection{
+    width: 310px;
+    height: 50px;
+    background-color: #fa5757;
+    border: 1px solid #fa5757;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
