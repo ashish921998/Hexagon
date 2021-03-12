@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux"
+import { useParams } from 'react-router'
 import { getRestaurant } from '../../Redux/DetailPage/detailPageActionsTypes'
 import { MenuRestaurant } from './MenuRestaurant'
 import { OffersPage } from './OffersPage'
@@ -8,7 +9,11 @@ import { RestaurantAboutSubpart } from './RestaurantAboutSubpart'
 import { RestaurantDetail } from './RestaurantDetail'
 
 export const DetailPage = () => {
-    const restaurantData = useSelector((store) => store.restaurantDetail.restaurantData)
+    const {name} = useParams()
+    const restaurantData = useSelector((store) => store.restaurantDetail.restaurantData.filter(item=>(
+        item.resturant_name === name && item
+    )   
+    ))
     console.log(restaurantData)
 
     const dispatch = useDispatch()

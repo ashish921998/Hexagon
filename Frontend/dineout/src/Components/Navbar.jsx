@@ -147,12 +147,11 @@ function Navbar() {
         </div>
         <hr />
         <div className={styles.links}>
-          <Link to="/">Home</Link>
-          <Link to="/book">Book a table</Link>
-          <Link to="/pay">Dineout Pay</Link>
-          <Link to="/pass">Dineout Passport</Link>
-          <Link to="/super">Super Saver</Link>
-          <Link to="/blog">Blog</Link>
+          <div><Link to="/">Home</Link></div>
+          <div><Link to="/book">Book a table</Link></div>
+          <div><Link to="/pay">Dineout Pay</Link></div>
+          <div><Link to="/pass">Dineout Passport</Link></div>
+          <div><Link to="/super">Super Saver</Link></div>
         </div>
       </div>
     </div>
