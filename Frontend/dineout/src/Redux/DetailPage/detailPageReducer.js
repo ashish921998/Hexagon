@@ -41,20 +41,3 @@ export const restaurantDetailReducer = (
   }
 };
 
-// restaurant_name: "",
-//         image: "",
-//         location: "",
-//         timings: "",
-//         girf: [],
-//         dineoutPay: "",
-//         passport: "",
-//         free_offer: [],
-//         menu_images: [],
-//         about: "",
-//         cuisine: "",
-//         type: "",
-//         average_cost: "",
-//         best_selling_items: "",
-//         facilities: [],
-//           contact: [],
-//         rating:""
