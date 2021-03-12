@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const dotenv = require("dotenv");
@@ -213,8 +215,54 @@ app.get("/dineoutpassports", async (req, res) => {
   res.status(200).json({ data: datas });
 });
 
+// let
+// let arr = [];
+// console.log(app);
+// const filterSchema = new mongoose.Schema({
+//   dineoutpassport: {
+//     type: String,
+//     required: true,
+//   },
+// });
+// const Dineoutpassport = mongoose.model(
+//   "dineoutpassport",
+//   dineoutpassportSchema
+// );
+// app.post("/filters", async (req, res) => {
+//   const data = req.body;
+//   arr.push(data);
+//   // console.log(data);
+// });
+// if (arr.length > 0) {
+// let arr = req.query;
+// console.log(req.query, "query params");
+// const data = await Restaurant.find({ $and: req.params.t }).lean().exec();
+// console.log(data);
+// res.status(200).json({ data });
 app.post("/filters", async (req, res) => {
-  const data = res.body();
+  // let body = req.body
+  let query = [];
+
+  let queryObj = {};
+  Object.keys(req.body).map((key) => {
+    if (req.body[key].length > 0) {
+      queryObj[key] = req.body[key]; // {features: ["604612a0e166782bca4ab71c"]}
+      query.push(queryObj); // query = [{features: ["604612a0e166782bca4ab71c"]}]
+    }
+  });
+  console.log(query);
+  const datas = await Restaurant.find({
+    $and: [{ tag: "604a53252867685f7c78e6e0" }],
+  })
+    .populate("girfs")
+    .populate("cuisines")
+    .populate("tags")
+    .populate("dineoutpassport")
+    .populate("features")
+    .lean()
+    .exec();
+  console.log(datas);
+  res.status(200).json({ data: datas });
 });
 
 async function start() {

@@ -39,4 +39,18 @@ const getRestaurant = () => (dispatch) => {
     });
 };
 
-export { getRestaurant };
+const filterRestaurant = () => (dispatch) => {
+  dispatch(getRestaurantRequest());
+  return axios
+    .get("http://localhost:6878/filters")
+    .then((res) => {
+      //   console.log(res);
+      dispatch(getRestaurantSuccess(res.data.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(getRestaurantFailure(err));
+    });
+};
+
+export { getRestaurant, filterRestaurant };
