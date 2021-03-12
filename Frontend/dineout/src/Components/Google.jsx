@@ -3,7 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import axios from "axios"
 function Google() {
   const [des,setDes]=React.useState("")
-  console.log(des.profileObj,"des")
+  console.log(des.profileObj.name.split(" "),"des")
   return (
     <div>
       <GoogleLogin

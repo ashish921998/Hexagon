@@ -96,7 +96,9 @@ function Navbar() {
                 height: "30px",
                 borderRadius: "5px",
                 paddingLeft: "30px",
+               
               }}
+              readonly
             />
           </div>
 
