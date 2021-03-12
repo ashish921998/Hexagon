@@ -1,20 +1,19 @@
 import "./App.css";
-import Bookatablenew from "./Components/Bookatable/Bookatablenew";
-import Book from "./Components/Bookatable/book";
-import { DetailPage } from "./Components/Resturant_detail_page/DetailPage";
-import Landing from "./Components/Landing";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import Routes from "./Routes/Routes";
 
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       {/* <Navbar /> */}
       {/* <Landing /> */}
       {/* <Footer /> */}
       {/* <Bookatablenew /> */}
       <DetailPage />
       {/* <Book /> */}
+=======
+      <Routes/>
+>>>>>>> 824a5fdbeb1b2f1171ac5256cc4d3799628733d1
     </div>
   );
 }

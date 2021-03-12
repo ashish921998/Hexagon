@@ -16,8 +16,9 @@ import { getRestaurant, filterRestaurant } from "../../Redux/DetailPage/detailPa
 import axios from "axios";
 
 
-const Bookatablenew = () => {
-  let d = useSelector((store) => store.restaurantDetail.restaurantData);
+const Dineoutpay = () => {
+  let d = useSelector((store) => store.restaurantDetail.restaurantData.filter(item=>item.dineoutPay===true ?item:null));
+
   const [restaurantData, setRestaurantData] = React.useState(d);
   const [category,setCategory]=React.useState("")
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Bookatablenew = () => {
     dispatch(filterRestaurant())
   }, [filters])
 
+  
   const get = (url) => {
     return axios.get(url).then((res) => setRestaurantData(res.data.data));
   };
@@ -523,6 +525,7 @@ const Bookatablenew = () => {
                     onChange={(e) => handlefilter(e, "tags")}
                     name="Dineout Pay"
                     value="604a53352867685f7c78e6e1"
+                    checked={true}
                   />
                   Dineout Pay
                 </div>
@@ -724,4 +727,4 @@ const Bookatablenew = () => {
   );
 };
 
-export default Bookatablenew;
+export default Dineoutpay;

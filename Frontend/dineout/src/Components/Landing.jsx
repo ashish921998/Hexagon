@@ -138,7 +138,7 @@ function Landing() {
                 src="https://im1.dineout.co.in/images/uploads/misc/2020/May/8/bffet.png"
                 alt="hi"
               />
-              <p>Micro Breweries</p>
+              <p>Buffet</p>
             </div>
           </Link>
           <Link to="/">
@@ -147,7 +147,7 @@ function Landing() {
                 src="https://im1.dineout.co.in/images/uploads/misc/2020/May/8/pure_veg.png"
                 alt="hi"
               />
-              <p>Pocket Friendly</p>
+              <p>Pure Veg</p>
             </div>
           </Link>
           <Link to="/">
@@ -156,7 +156,7 @@ function Landing() {
                 src="https://im1.dineout.co.in/images/uploads/misc/2020/May/8/pet_friendly.png"
                 alt="hi"
               />
-              <p>Romantic Rooftops</p>
+              <p>Pet Friendly</p>
             </div>
           </Link>
           <Link to="/">
@@ -165,7 +165,7 @@ function Landing() {
                 src="https://im1.dineout.co.in/images/uploads/misc/2020/May/8/vest_bars.png"
                 alt="hi"
               />
-              <p>New on Dineout</p>
+              <p>Best Bars</p>
             </div>
           </Link>
         </div>

@@ -24,7 +24,7 @@
 
 a {
   text-decoration: none;
-  color: black;
+  color: rgb(252, 97, 97);
   margin: 5px 15px;
 }
 
@@ -32,6 +32,17 @@ a {
   display: flex;
   justify-content: center;
   height: 50px;
+}
+.links>div{
+  display: flex;
+  justify-content: center;
+
+}
+.links>div:hover{
+  font-weight:bolder;
+  display: flex;
+  justify-content: center;
+
 }
 
 .gridImg {
@@ -56,11 +67,17 @@ a {
 
 .linkbtn {
   display: flex;
-  background-color: rgb(202, 199, 199);
+  background-color: rgb(236, 232, 232);
   border: 1px solid grey;
   width: 220px;
   border-radius: 5px;
   justify-content: center;
   height: 50px;
   padding: 10px;
+  color: gray;
+  font-size:18px;
+  margin-left: 5px;
+}
+.linkbtn:hover{
+  background-color: rgba(202, 199, 199,0.7);
 }

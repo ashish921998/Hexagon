@@ -2,10 +2,11 @@
     width:93%;
     margin:auto;
     /* border:2px solid black; */
-    display:flex
+    display:flex;
+    margin-top: 130px;
 }
 .Bookatable_innerbox1{
-    width:25%;
+    width:20%;
     /* border:1px solid red; */
     margin:10px
 }
@@ -15,14 +16,16 @@
     margin:10px
 }
 .Bookatable_Girf{
-    width:90%;
+    width:100%;
     margin:auto;
-   
     display:flex;
-   
+    border:1px solid gray;
+    background-color: white;
+    border-radius:15px 15px 0px  0px;
     /* padding:10px; */
     justify-content: center;
     align-items: center;
+    margin-bottom: 13px;
 }
 .Bookatable_Girf_inner{
     width:50%;
@@ -35,8 +38,8 @@
 }
 .Bookatable_girf{
     width:30%;
-    margin-right:20px;
- 
+    margin-right:60px;
+    margin-left:30px;
     display:flex;
     padding:10px;
     
@@ -55,36 +58,43 @@
     align-items: center;
     font-size:12px;
     color:white;
-    margin-left:20px;
+    /* margin-left:20px; */
     font-weight:bold;
 }
 
 .Bookatable_Addicon{
     width:40%;
-   margin-left:36.5%;
+   margin-left:33%;
    
 }
 
 
 .navBox {
-    
+    /* border:1px solid navy; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     overflow: hidden;
     height:0;
     transition: all 1s;
     clear:both;
+    
   }
 .height1{
     height:fit-content;
+    background-color:#FFFFFF;
+    /* border:1px solid gray; */
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 8px;
 }
 .QuickFilters{
     width:100%;
     height:20%;
     display:flex;
     flex-direction: row;
+    
 }
 .QuickFilters_text{
     width:70%;
@@ -92,8 +102,10 @@
     float:left;
     color:grey;
     font-weight:bold;
-    font-size:17px;
-    margin-left:5%
+    font-size:20px;
+    margin-bottom:5%;
+    margin-left:17px;
+   
 }
 .QuickFilters_Addicon{
     width:17%;
@@ -102,19 +114,24 @@
 }
 .Bookatable_filter_input
 {
-    height:25px;
-    width:90%;
+    height:30px;
+    width:87%;
     font-weight:bold;
     font-size:14px;
     font-weight:lighter;
+    margin-bottom:5%;
+    text-align: center;
+    outline:none
     
 }
 .Bookatable_div_input{
     width:100%;
-    margin:auto;
+    /* margin:auto; */
     height:30px;
     color:grey;
-    margin-left:5%
+    
+    /* border:1px solid black; */
+    /* margin-left:5% */
 }
 .Bookatable_div_showmore{
     width:100%;

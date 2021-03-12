@@ -16,8 +16,8 @@ import { getRestaurant, filterRestaurant } from "../../Redux/DetailPage/detailPa
 import axios from "axios";
 
 
-const Bookatablenew = () => {
-  let d = useSelector((store) => store.restaurantDetail.restaurantData);
+const Supersaver = () => {
+    let d = useSelector((store) => store.restaurantDetail.restaurantData.filter(item=>item.superSaver!==true ?item:null));
   const [restaurantData, setRestaurantData] = React.useState(d);
   const [category,setCategory]=React.useState("")
   const dispatch = useDispatch();
@@ -724,4 +724,4 @@ const Bookatablenew = () => {
   );
 };
 
-export default Bookatablenew;
+export default Supersaver;
