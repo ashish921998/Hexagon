@@ -157,32 +157,28 @@ const Bookatablenew = () => {
           index=i;
         }
         }
-        if (count === 0) {
-       
-          filtersCopy["cuisines"].push(e.target.value)
-          console.log(filtersCopy,"extra0")
-        }
-        else if(count>0)
-        {
-           for(let m=0;m<filtersCopy["cuisines"].length;m++)
-           {
-             if(m!==index)
-             {
-                  extra.push(filtersCopy["cuisines"][m])
-             }
-           }
-           filtersCopy["cuisines"]=extra 
-           setFilters(filtersCopy)
-        }
       }
       console.log(e.target.checked)
-      
-     
+      if (count === 0) {
+       
+        filtersCopy["cuisines"].push(e.target.value)
+        console.log(filtersCopy,"extra0")
+      }
+      else if(count>0)
+      {
+         for(let m=0;m<filtersCopy["cuisines"].length;m++)
+         {
+           if(m!==index)
+           {
+                extra.push(filtersCopy["cuisines"][m])
+           }
+         }
+         filtersCopy["cuisines"]=extra 
+      }
       console.log(filtersCopy,"extra1")
-      //  setFilters(filtersCopy)
+    
     count = 0;
     index=0;
-    extra=[]
     if (type === "facilities") {
       for (let i = 0; i < filters["facilities"].length; i++) {
         if (filters["facilities"][i] === e.target.value) {
@@ -193,25 +189,10 @@ const Bookatablenew = () => {
         filtersCopy["facilities"].push(e.target.value)
 
       }
-      else if(count>0)
-      {
-         for(let m=0;m<filtersCopy["facilities"].length;m++)
-         {
-           if(m!==index)
-           {
-                extra.push(filtersCopy["facilities"][m])
-           }
-         }
-         filtersCopy["facilities"]=extra 
-         setFilters(filtersCopy)
-      }
-      console.log(filtersCopy,"extra1")
-      // setFilters(filtersCopy)
 
     }
     count = 0;
     index=0;
-    extra=[]
     if (type === "tags") {
       for (let i = 0; i < filters["tags"].length; i++) {
         if (filters["tags"][i] === e.target.value) {
@@ -222,25 +203,10 @@ const Bookatablenew = () => {
         filtersCopy["tags"].push(e.target.value)
 
       }
-      else if(count>0)
-      {
-         for(let m=0;m<filtersCopy["tags"].length;m++)
-         {
-           if(m!==index)
-           {
-                extra.push(filtersCopy["tags"][m])
-           }
-         }
-         filtersCopy["tags"]=extra 
-         setFilters(filtersCopy)
-      }
-      console.log(filtersCopy,"extra1")
-      // setFilters(filtersCopy)
 
     }
     count = 0;
     index=0;
-    extra=[]
     if (type === "dineoutpassport") {
       for (let i = 0; i < filters["dineoutpassport"].length; i++) {
         if (filters["dineoutpassport"][i] === e.target.value) {
@@ -251,26 +217,10 @@ const Bookatablenew = () => {
         filtersCopy["dineoutpassport"].push(e.target.value)
 
       }
-      else if(count>0)
-      {
-         for(let m=0;m<filtersCopy["dineoutpassport"].length;m++)
-         {
-           if(m!==index)
-           {
-                extra.push(filtersCopy["dineoutpassport"][m])
-           }
-         }
-         filtersCopy["dineoutpassport"]=extra
-         setFilters(filtersCopy) 
-      }
-      console.log(filtersCopy,"extra1")
-      // setFilters(filtersCopy)
-
 
     }
     count = 0;
     index=0;
-    extra=[]
     if (type === "girfs") {
       for (let i = 0; i < filters["girfs"].length; i++) {
         if (filters["girfs"][i] === e.target.value) {
@@ -281,23 +231,8 @@ const Bookatablenew = () => {
         filtersCopy["girfs"].push(e.target.value)
 
       }
-      else if(count>0)
-      {
-         for(let m=0;m<filtersCopy["girfs"].length;m++)
-         {
-           if(m!==index)
-           {
-                extra.push(filtersCopy["girfs"][m])
-           }
-         }
-         filtersCopy["girfs"]=extra 
-         setFilters(filtersCopy)
-      }
-      console.log(filtersCopy,"extra1")
-      // setFilters(filtersCopy)
 
     }
-    console.log("filters",filters)
     let temp = []
     for (let key in filtersCopy) {
       if (filtersCopy[key].length > 0) {
@@ -316,11 +251,8 @@ const Bookatablenew = () => {
       
     })
     console.log("filterobj",filtersObj)
-   
-      return axios.post(`http://localhost:6878/filters`, filtersObj)
+    return axios.post(`http://localhost:6878/filters`, filtersObj)
       .then((res) => setRestaurantData(res.data.data))
-   
-   
 
   }
   // console.log(restaurantData)

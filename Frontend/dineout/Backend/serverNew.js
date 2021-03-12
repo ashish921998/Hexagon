@@ -239,31 +239,32 @@ app.get("/dineoutpassports", async (req, res) => {
 // const data = await Restaurant.find({ $and: req.params.t }).lean().exec();
 // console.log(data);
 // res.status(200).json({ data });
-app.post("/filters", async (req, res) => {
-  // let body = req.body
-  let query = [];
 
-  let queryObj = {};
-  Object.keys(req.body).map((key) => {
-    if (req.body[key].length > 0) {
-      queryObj[key] = req.body[key]; // {features: ["604612a0e166782bca4ab71c"]}
-      query.push(queryObj); // query = [{features: ["604612a0e166782bca4ab71c"]}]
-    }
+  app.post("/filters", async (req, res) => {
+    let queryObj = [];
+    Object.keys(req.body).map((key) => {
+      if (req.body[key].length > 0) {
+        let queryArray = [];
+        for (let i = 0; i < req.body[key].length; i++) {
+          queryArray.push({ [key]: req.body[key][i] });
+        }
+        let queryOrObject = { $or: queryArray };
+        queryObj.push(queryOrObject);
+      }
+    });
+    const datas = await Restaurant.find({
+      $and: queryObj,
+    })
+      .populate("girfs")
+      .populate("cuisines")
+      .populate("tags")
+      .populate("dineoutpassport")
+      .populate("features")
+      .lean()
+      .exec();
+    res.status(200).json({ data: datas });
   });
-  console.log(query);
-  const datas = await Restaurant.find({
-    $and: [{ tag: "604a53252867685f7c78e6e0" }],
-  })
-    .populate("girfs")
-    .populate("cuisines")
-    .populate("tags")
-    .populate("dineoutpassport")
-    .populate("features")
-    .lean()
-    .exec();
-  console.log(datas);
-  res.status(200).json({ data: datas });
-});
+
 
 async function start() {
   await connect();
