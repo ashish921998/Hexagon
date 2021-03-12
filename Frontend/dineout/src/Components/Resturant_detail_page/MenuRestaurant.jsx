@@ -6,7 +6,7 @@ export const MenuRestaurant = ({ menuImage, menuLength }) => {
         <div className={styles.MenuRestaurant_Container}>
             <div className={styles.MenuRestaurant_Head}>Menu</div>
             <div className={styles.MenuRestaurant_Img}>
-                <img src={menuImage.url} alt="menu Img" />
+                <img src={menuImage} alt="menu Img" />
                 {/* <span className={styles.menuNumber}>menu({menuLength})</span> */}
             </div>
         </div>

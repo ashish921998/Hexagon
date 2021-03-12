@@ -3,7 +3,6 @@ import {
   GET_RESTAURANT_FAILURE,
   GET_RESTAURANT_REQUEST,
   GET_RESTAURANT_SUCCESS,
- 
 } from "./detailPageActions";
 
 const getRestaurantRequest = () => {
@@ -26,7 +25,6 @@ const getRestaurantFailure = (err) => {
   };
 };
 
-
 const getRestaurant = () => (dispatch) => {
   dispatch(getRestaurantRequest());
   return axios
@@ -41,4 +39,18 @@ const getRestaurant = () => (dispatch) => {
     });
 };
 
-export { getRestaurant };
+const filterRestaurant = () => (dispatch) => {
+  dispatch(getRestaurantRequest());
+  return axios
+    .get("http://localhost:6878/filters")
+    .then((res) => {
+      //   console.log(res);
+      dispatch(getRestaurantSuccess(res.data.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(getRestaurantFailure(err));
+    });
+};
+
+export { getRestaurant, filterRestaurant };

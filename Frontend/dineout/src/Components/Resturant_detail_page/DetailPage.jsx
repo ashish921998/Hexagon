@@ -19,12 +19,12 @@ export const DetailPage = () => {
     return (
         <div>
             {restaurantData.map((restaurant) => {
-                let cuisine = restaurant.cuisine.split(",")
-                cuisine.shift()
+                let cuisine = restaurant.cuisines
+                // cuisine.shift()
                 // console.log(cuisine)
                 // let offers = restaurant.free_offer.length
                 let freeOffers = restaurant.free_offer
-                let menuImage = restaurant.menu_images[0]
+                let menuImage = restaurant.menu_images
                 let menuLength = restaurant.menu_images.length
                 return (
                     <div style={{ width: "1200px", }}>
