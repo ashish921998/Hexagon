@@ -20,7 +20,7 @@ const Bookatablenew = () => {
   let d = useSelector((store) => store.restaurantDetail.restaurantData);
   const [restaurantData, setRestaurantData] = React.useState(d);
   const dispatch = useDispatch();
-  const [filters, setFilters] = React.useState({ cuisine: [], facilities: [], tag: [], dineoutpassport: [], girfs: [] })
+  const [filters, setFilters] = React.useState({ cuisines: [], facilities: [], tags: [], dineoutpassport: [], girfs: [] })
   React.useEffect(() => {
     dispatch(getRestaurant());
   }, [dispatch]);
@@ -148,15 +148,15 @@ const Bookatablenew = () => {
   const handlefilter = (e, type) => {
     let count = 0;
     let filtersCopy = { ...filters }
-    if (type === "cuisine") {
-      for (let i = 0; i < filters["cuisine"].length; i++) {
-        if (filters["cuisine"][i] === e.target.value) {
+    if (type === "cuisines") {
+      for (let i = 0; i < filters["cuisines"].length; i++) {
+        if (filters["cuisines"][i] === e.target.value) {
           count++
         }
       }
       if (count === 0) {
 
-        filtersCopy["cuisine"].push(e.target.value)
+        filtersCopy["cuisines"].push(e.target.value)
       }
 
     }
@@ -174,14 +174,14 @@ const Bookatablenew = () => {
 
     }
     count = 0;
-    if (type === "tag") {
-      for (let i = 0; i < filters["tag"].length; i++) {
-        if (filters["tag"][i] === e.target.value) {
+    if (type === "tags") {
+      for (let i = 0; i < filters["tags"].length; i++) {
+        if (filters["tags"][i] === e.target.value) {
           count++
         }
       }
       if (count === 0) {
-        filtersCopy["tag"].push(e.target.value)
+        filtersCopy["tags"].push(e.target.value)
 
       }
 
@@ -228,7 +228,18 @@ const Bookatablenew = () => {
     // // console.log(params.get("North Indian"))
     // // get(url)
     // console.log(url)
-    return axios.post(`http://localhost:6878/filters`, filters)
+    console.log("filters",filters)
+    let filtersObj={}
+   Object.keys(filters).map(filter=> {
+     debugger
+      if(filters[filter].length>0)
+      {
+        filtersObj[filter]=filters[filter]
+      }
+      
+    })
+    console.log("filterobj",filtersObj)
+    return axios.post(`http://localhost:6878/filters`, filtersObj)
       .then((res) => console.log(res))
 
   }
