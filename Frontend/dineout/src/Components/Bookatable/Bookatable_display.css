@@ -14,6 +14,7 @@
   border-radius: 7px;
   display: flex;
   flex-direction: column;
+  position:relative
 }
 
 .displaytable_imagesize{
@@ -45,4 +46,63 @@
     font-size:12px;
     text-align: left;
     margin-left:10px;
+}
+.bookrating{
+    width:35px;
+    height:35px;
+    border-radius: 10px;
+    
+    position:absolute;
+    z-index: 99;
+    top:10px;
+    right:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+.green{
+    background-color: #79B63A;
+    width:35px;
+    height:35px;
+    border-radius: 10px;
+    color:honeydew;
+    position:absolute;
+    z-index: 1.5;
+    top:10px;
+    right:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+.yellow{
+    background-color: rgb(255, 187, 0);
+    width:35px;
+    height:35px;
+    border-radius: 10px;
+    color:honeydew;
+    position:absolute;
+    z-index: 1.5;
+    top:10px;
+    right:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+.red{
+    background-color: rgb(201, 24, 62);
+    width:35px;
+    height:35px;
+    border-radius: 10px;
+    color:honeydew;
+    position:absolute;
+    z-index: 1.5;
+    top:10px;
+    right:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
 }

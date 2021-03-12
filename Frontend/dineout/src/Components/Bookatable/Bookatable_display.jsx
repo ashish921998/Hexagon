@@ -1,34 +1,51 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "./Bookatable_display.css";
 
 const Tabledisplaydata = (props) => {
+  
   console.log(props);
-  const { restaurantData } = props;
+  const { restaurantData,handlesort,category } = props;
   console.log(restaurantData);
+  const history = useHistory()
+  const handleroute = (x)=>{
+    history.push(`/book/${x}`)
+  }
+ 
+  console.log(restaurantData)
   return (
     <>
       <div>
+        <div style={{display:"flex",flexDirection:"row"}}>
         <h2 style={{ marginLeft: "20px" }}>
           Best Restaurants Near Me in Bangalore{" "}
         </h2>
+        {/* <select value={category} onChange={handlesort}>
+           <option value="none">Select</option>
+            <option value="Rating">Rating</option>
+            <option value="Price :Low to High">Price :Low to High</option>
+            <option value="Price :High to Low">Price :High to Low</option>
+
+          </select> */}
+        </div>
         {restaurantData?.map((item, i) => {
-          // let cuisine = restaurantData[i].cuisine.split(",");
-          // cuisine[0] === "CUISINE" && cuisine.shift();
-          // console.log(
-          //   cuisine,
-          //   restaurantData[i].girf.length,
-          //   restaurantData[i].free_offer.length
-          // );
+          let cuisinestr=[]
+          let cuisine = restaurantData[i].cuisines.map((item,i)=>{
+           cuisinestr.push(item.cuisine)
+          });
+          console.log(cuisinestr.join(","))
+          let style= restaurantData[i].rating>4 ? "green":(restaurantData[i].rating>=3 && restaurantData[i].rating<4) ? "yellow":"red"
           return (
             <>
-              <div className="displaytable_card">
+              <div className="displaytable_card" onClick={()=>handleroute(item.resturant_name)}>
                 <div>
                   <img
                     className="displaytable_imagesize"
-                    src={`${restaurantData[i].image}`}
+                    src={`${item.image}`}
                     alt="imag"
                   />
                 </div>
+                <div className={style}>{item.rating}</div>
                 <div
                   style={{
                     textAlign: "left",
@@ -47,35 +64,35 @@ const Tabledisplaydata = (props) => {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {restaurantData[i].resturant_name}
+                    {item.resturant_name}
                   </b>
                 </div>
                 <p className="displaytable_location">
                   {" "}
-                  {restaurantData[i].location}
+                  {item.location}
                 </p>
 
-                {/* <div className="displaytable_cuisines">
+                <div className="displaytable_cuisines">
                   {" "}
-                  {`${restaurantData[i].average_cost}(approx)|${[...cuisine]}`}
-                </div> */}
+                  {`₹${item.average_cost} for two(approx) | ${cuisinestr}`}
+                </div>
 
-                {restaurantData[i].dineoutPay && (
+                {item.dineoutPay && (
                   <div className="displaytable_dineoutpay">Dineout Pay</div>
                 )}
-                {restaurantData[i].girfs.length > 0 &&
-                  restaurantData[i].free_offer.length &&
-                  restaurantData[i].resturant_name !== "The Big Barbeque" && (
+                {item.girfs.length > 0 &&
+                  item.free_offer.length &&
+                  item.resturant_name !== "The Big Barbeque" && (
                     <div className="displaytable_offers">{`${
-                      restaurantData[i].girfs.length > 0 &&
-                      restaurantData[i].girfs.length
+                      item.girfs.length > 0 &&
+                      item.girfs.length
                     } ${
-                      restaurantData[i].girfs.length > 1 ? "deals" : "deal"
+                      item.girfs.length > 1 ? "deals" : "deal"
                     } and ${
-                      restaurantData[i].free_offer.length > 0 &&
-                      restaurantData[i].free_offer.length
+                      item.free_offer.length > 0 &&
+                      item.free_offer.length
                     } ${
-                      restaurantData[i].free_offer.length > 1
+                      item.free_offer.length > 1
                         ? "offers"
                         : "offer"
                     } are available`}</div>

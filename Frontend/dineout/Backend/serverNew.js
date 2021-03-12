@@ -45,7 +45,7 @@ const restaurantSchema = new mongoose.Schema(
       required: true,
     },
     average_cost: {
-      type: String,
+      type: Number,
       required: true,
     },
     menu_images: {
@@ -275,7 +275,58 @@ app.post("/filters", async (req, res) => {
     .exec();
   res.status(200).json({ data: datas });
 });
-
+//sorting
+app.post("/sorting",async (req,res)=>{
+  console.log(req.body["x"])
+   if(req.body["x"]==="Price :Low to High")
+   {
+    const datas = await Restaurant.find({}).sort({average_cost:1})
+      .populate("girfs")
+      .populate("cuisines")
+      .populate("tags")
+      .populate("dineoutpassport")
+      .populate("features")
+      .lean()
+      .exec();
+      res.status(200).json({ data: datas });
+   }
+   else if(req.body["x"]==="Price :High to Low")
+   {
+    const datas = await Restaurant.find({}).sort({average_cost:-1})
+      .populate("girfs")
+      .populate("cuisines")
+      .populate("tags")
+      .populate("dineoutpassport")
+      .populate("features")
+      .lean()
+      .exec();
+      res.status(200).json({ data: datas });
+   }
+   else if(req.body["x"]==="Rating")
+   {
+    const datas = await Restaurant.find({}).sort({rating:-1})
+      .populate("girfs")
+      .populate("cuisines")
+      .populate("tags")
+      .populate("dineoutpassport")
+      .populate("features")
+      .lean()
+      .exec();
+      res.status(200).json({ data: datas });
+   }
+   else if(req.body["x"]==="none")
+   {
+    const datas = await Restaurant.find({})
+      .populate("girfs")
+      .populate("cuisines")
+      .populate("tags")
+      .populate("dineoutpassport")
+      .populate("features")
+      .lean()
+      .exec();
+      res.status(200).json({ data: datas });
+   }
+})
 async function start() {
   await connect();
   app.listen(6878, () => {
