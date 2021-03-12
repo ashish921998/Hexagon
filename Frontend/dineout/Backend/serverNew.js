@@ -264,7 +264,24 @@ app.get("/dineoutpassports", async (req, res) => {
       .exec();
     res.status(200).json({ data: datas });
   });
+<<<<<<< HEAD
+  console.log(query);
+  const datas = await Restaurant.find({
+    $and: query,
+  })
+    .populate("girfs")
+    .populate("cuisines")
+    .populate("tags")
+    .populate("dineoutpassport")
+    .populate("features")
+    .lean()
+    .exec();
+  console.log(datas);
+  res.status(200).json({ data: datas });
+});
+=======
 
+>>>>>>> f766bf6325aa3823f4a2d90666c8f6d63ea269ab
 
 async function start() {
   await connect();
