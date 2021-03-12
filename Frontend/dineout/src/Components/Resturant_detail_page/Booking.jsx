@@ -90,9 +90,9 @@ export const Booking = () => {
                     <p>Enter Guest Details</p>
                     <div className={styles.guest_details_input}>
                         <input type="text" placeholder="Name" name="name" value={visitor.name} onChange={visitorData} />
-                        <input type="text" placeholder="Mobile Number" name="mobile" value={visitor.mobile} onClick={visitorData} />
-                        <input type="text" placeholder="Email Address (Optional)" name="email" value={visitor.email} onClick={visitorData} />
-                        <input type="text" placeholder="Special Request (Optional)" name="special" value={visitor.special} onClick={visitorData} />
+                        <input type="text" placeholder="Mobile Number" name="mobile" value={visitor.mobile} onChange={visitorData} />
+                        <input type="text" placeholder="Email Address (Optional)" name="email" value={visitor.email} onChange={visitorData} />
+                        <input type="text" placeholder="Special Request (Optional)" name="special" value={visitor.special} onChange={visitorData} />
                         {guestCount > 0 && <button className={styles.data_collection}>Continue</button>}
                     </div>
                     {/* <div></div> */}

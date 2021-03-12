@@ -116,9 +116,11 @@ app.get("/restaurants", async (req, res) => {
     .exec();
   res.status(200).json({ data: datas });
 });
-app.patch("/restaurants/:id",async (req,res)=>{
-  const data = await Restaurant.findByIdAndUpdate(req.params.id,req.body,{new:true})
-  .populate("girfs")
+app.patch("/restaurants/:id", async (req, res) => {
+  const data = await Restaurant.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+    .populate("girfs")
     .populate("cuisines")
     .populate("tags")
     .populate("dineoutpassport")
@@ -126,8 +128,8 @@ app.patch("/restaurants/:id",async (req,res)=>{
     .lean()
     .exec();
   // console.log(booktable)
-  res.status(200).json({data:data})
-})
+  res.status(200).json({ data: data });
+});
 const girfSchema = new mongoose.Schema({
   icon: {
     type: String,
@@ -226,8 +228,6 @@ app.get("/dineoutpassports", async (req, res) => {
   res.status(200).json({ data: datas });
 });
 
-
-
 app.post("/filters", async (req, res) => {
   let queryObj = [];
   Object.keys(req.body).map((key) => {
@@ -253,11 +253,11 @@ app.post("/filters", async (req, res) => {
   res.status(200).json({ data: datas });
 });
 //sorting
-app.post("/sorting",async (req,res)=>{
-  console.log(req.body["x"])
-   if(req.body["x"]==="Price :Low to High")
-   {
-    const datas = await Restaurant.find({}).sort({average_cost:1})
+app.post("/sorting", async (req, res) => {
+  console.log(req.body["x"]);
+  if (req.body["x"] === "Price :Low to High") {
+    const datas = await Restaurant.find({})
+      .sort({ average_cost: 1 })
       .populate("girfs")
       .populate("cuisines")
       .populate("tags")
@@ -265,11 +265,10 @@ app.post("/sorting",async (req,res)=>{
       .populate("features")
       .lean()
       .exec();
-      res.status(200).json({ data: datas });
-   }
-   else if(req.body["x"]==="Price :High to Low")
-   {
-    const datas = await Restaurant.find({}).sort({average_cost:-1})
+    res.status(200).json({ data: datas });
+  } else if (req.body["x"] === "Price :High to Low") {
+    const datas = await Restaurant.find({})
+      .sort({ average_cost: -1 })
       .populate("girfs")
       .populate("cuisines")
       .populate("tags")
@@ -277,11 +276,10 @@ app.post("/sorting",async (req,res)=>{
       .populate("features")
       .lean()
       .exec();
-      res.status(200).json({ data: datas });
-   }
-   else if(req.body["x"]==="Rating")
-   {
-    const datas = await Restaurant.find({}).sort({rating:-1})
+    res.status(200).json({ data: datas });
+  } else if (req.body["x"] === "Rating") {
+    const datas = await Restaurant.find({})
+      .sort({ rating: -1 })
       .populate("girfs")
       .populate("cuisines")
       .populate("tags")
@@ -289,10 +287,8 @@ app.post("/sorting",async (req,res)=>{
       .populate("features")
       .lean()
       .exec();
-      res.status(200).json({ data: datas });
-   }
-   else if(req.body["x"]==="none")
-   {
+    res.status(200).json({ data: datas });
+  } else if (req.body["x"] === "none") {
     const datas = await Restaurant.find({})
       .populate("girfs")
       .populate("cuisines")
@@ -301,9 +297,9 @@ app.post("/sorting",async (req,res)=>{
       .populate("features")
       .lean()
       .exec();
-      res.status(200).json({ data: datas });
-   }
-})
+    res.status(200).json({ data: datas });
+  }
+});
 //google
 const userSchema = new mongoose.Schema({
   name: {
@@ -314,33 +310,77 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  googleId:{
+  googleId: {
     type: String,
     required: true,
   },
-  email:{
+  email: {
     type: String,
     required: true,
-  }
+  },
 });
 const User = mongoose.model("user", userSchema);
-app.post("/users",async (req,res)=>{
-  console.log(req.body["googleId"])
-  let check = req.body["googleId"]
-   let data1 = await User.find({googleId : {$eq:check}}).lean().exec()
-   if(data1.length===0)
-   {
+app.post("/users", async (req, res) => {
+  console.log(req.body["googleId"]);
+  let check = req.body["googleId"];
+  let data1 = await User.find({ googleId: { $eq: check } })
+    .lean()
+    .exec();
+  if (data1.length === 0) {
     const data = await User.create(req.body);
     res.status(200).json({ data: data });
-   }
-   else{
-     res.status(200).send("no need")
-   }
-})
-app.get("/users",async(req,res)=>{
-  const data = await User.find({}).lean().exec()
+  } else {
+    res.status(200).send("no need");
+  }
+});
+app.get("/users", async (req, res) => {
+  const data = await User.find({}).lean().exec();
   res.status(200).json({ data: data });
-})
+});
+
+const bookingSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
+  restaurantId: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "restaurant",
+      required: true,
+    },
+  ],
+  timings: {
+    type: String,
+    required: true,
+  },
+  guest: {
+    type: Number,
+    required: true,
+  },
+  specialRequest: {
+    type: String,
+    required: false,
+  },
+  mobile: {
+    type: String,
+    required: false,
+  },
+});
+
+const Booking = mongoose.model("booking", bookingSchema);
+
+app.post("/booking", async (req, res) => {
+  const booking = await Booking.create(req.body);
+  res.status(201).json({ data: booking });
+});
+
+app.get("/booking", async (req, res) => {
+  const bookings = await Booking.find({}).lean().exec();
+  res.status(200).json({ data: bookings });
+});
+
 async function start() {
   await connect();
   app.listen(6878, () => {

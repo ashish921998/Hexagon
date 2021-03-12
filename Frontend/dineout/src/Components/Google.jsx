@@ -9,8 +9,8 @@ function Google() {
         buttonText="Google"
         onSuccess={(res) => {
           console.log(res)
-          return axios.post("http://localhost:6878/users",res.profileObj)
-                 .then((res)=>console.log(res))
+          return axios.post("http://localhost:6878/users", res.profileObj)
+            .then((res) => console.log(res))
         }}
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
