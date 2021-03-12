@@ -8,6 +8,7 @@ import Landing from "../Components/Landing"
 import Footer from "../Components/Footer/Footer"
 import {DetailPage} from "../Components/Resturant_detail_page/DetailPage"
 import Dineoutpay from "../Components/Bookatable/dineoutpay";
+import Supersaver from "../Components/Bookatable/supersaver";
 
 const Routes = () => {
  
@@ -32,6 +33,11 @@ const Routes = () => {
         <Route path="/book/:name" exact>
           <Navbar/>
           <DetailPage/>
+          <Footer/>
+        </Route>
+        <Route path="/super" exact>
+          <Navbar/>
+          <Supersaver/>
           <Footer/>
         </Route>
         <Route>
