@@ -11,10 +11,10 @@ import { RestaurantDetail } from './RestaurantDetail'
 import styles from "./DetailPage.module.css"
 
 export const DetailPage = () => {
-    const {name} = useParams()
-    const restaurantData = useSelector((store) => store.restaurantDetail.restaurantData.filter(item=>(
+    const { name } = useParams()
+    const restaurantData = useSelector((store) => store.restaurantDetail.restaurantData.filter(item => (
         item.resturant_name === name && item
-    )   
+    )
     ))
     console.log(restaurantData)
 
