@@ -6,7 +6,7 @@ export const RestaurantDetail = ({ restaurantName, image, location, timings, cui
     return (
         <div className={styles.container}>
             <div className={styles.image}>
-                <img src={image} alt={restaurantName} width="745px" height="400px" />
+                <img src={image} alt={restaurantName} height="400px" />
             </div>
             <div className={styles.container_info}>
                 <div className={styles.info_header}>

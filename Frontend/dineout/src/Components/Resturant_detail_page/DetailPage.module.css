@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.booking_container{
+    position: absolute;
+}
+
+.restaurant_Detail{
+    
+}

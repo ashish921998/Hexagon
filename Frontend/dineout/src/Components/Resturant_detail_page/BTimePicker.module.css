@@ -1,0 +1,8 @@
+.tabs_btn{
+    /* display: block; */
+    line-height: 36px;
+    font-size: 13px;
+    background-color: #dcdcdc;
+    margin: 5px;
+    border: 1px solid #dcdcdc;
+}
