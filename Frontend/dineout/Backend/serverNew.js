@@ -252,7 +252,7 @@ app.post("/filters", async (req, res) => {
   });
   console.log(query);
   const datas = await Restaurant.find({
-    $and: [{ tag: "604a53252867685f7c78e6e0" }],
+    $and: query,
   })
     .populate("girfs")
     .populate("cuisines")

@@ -27,11 +27,11 @@ export const DetailPage = () => {
                 let menuImage = restaurant.menu_images
                 let menuLength = restaurant.menu_images.length
                 return (
-                    <div style={{ width: "1200px", }}>
-                        <RestaurantDetail restaurantName={restaurant.resturant_name} image={restaurant.image} location={restaurant.location} timings={restaurant.timings} cuisine={cuisine} averageCost={restaurant.average_cost} />
-                        <OffersPage freeOffers={freeOffers} />
-                        <MenuRestaurant menuImage={menuImage} menuLength={menuLength} />
-                        <RestaurantAbout>
+                    <div style={{ width: "1200px", }} key={restaurant.id}>
+                        <RestaurantDetail key={restaurant.id} restaurantName={restaurant.resturant_name} image={restaurant.image} location={restaurant.location} timings={restaurant.timings} cuisine={cuisine} averageCost={restaurant.average_cost} />
+                        <OffersPage key={restaurant.id} freeOffers={freeOffers} />
+                        <MenuRestaurant key={restaurant.id} menuImage={menuImage} menuLength={menuLength} />
+                        <RestaurantAbout key={restaurant.id}>
                             {restaurant.about && <p>{restaurant.about}</p>}
                             <RestaurantAboutSubpart type={"cuisine"} />
                         </RestaurantAbout>
