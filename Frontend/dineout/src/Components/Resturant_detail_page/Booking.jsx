@@ -78,7 +78,7 @@ export const Booking = (props) => {
         console.log(cont)
 
         return axios.post("http://localhost:6878/booking", cont)
-            .then((res) => history.push(`/success/:${props.restaurant_name}`))
+            .then((res) => history.push(`/success/:${props.restaurant_nae}`))
     }
     console.log(visitor)
     console.log(timearr)
