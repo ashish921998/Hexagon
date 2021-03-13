@@ -37,7 +37,7 @@ export const Booking = (props) => {
     // const [year, setYear] = React.useState("")
     const [guestCount, setGuestCount] = React.useState(0)
     const [visitor, setVisitor] = React.useState(initialData)
-    const [timearr, setTimearr] = React.useState([])
+    const [timearr, setTimearr] = React.useState("")
     const selectedDay = (val) => {
         // console.log(val)
         let date = val.toString().split(" ")
@@ -61,7 +61,7 @@ export const Booking = (props) => {
         }
     }
     const handletime = (e) => {
-        setTimearr([...timearr, e.target.value])
+        setTimearr( e.target.value)
     }
     const visitorData = (e) => {
         let { name, value } = e.target
@@ -69,16 +69,17 @@ export const Booking = (props) => {
     }
     let cont = {}
     const handlecontinue = (e) => {
-        cont["userId"] = userId
-        cont["restaurantId"] = [props.id]
-        cont["timings"] = timearr
+        cont["name"] = visitor.name
+        cont["email"] = visitor.email
+        cont["restaurantname"] = props.name
+        cont["timings"] = [date,timearr]
         cont["guest"] = guestCount
         cont["specialRequest"] = visitor.special
         cont["mobile"] = visitor.mobile
         console.log(cont)
 
         return axios.post("http://localhost:6878/booking", cont)
-            .then((res) => history.push(`/success/:${props.restaurant_nae}`))
+            .then((res) => history.push(`/success`))
     }
     console.log(visitor)
     console.log(timearr)

@@ -20,13 +20,13 @@ const Tabledisplaydata = (props) => {
         <h2 style={{ marginLeft: "20px" }}>
           Best Restaurants Near Me in Bangalore{" "}
         </h2>
-        {/* <select value={category} onChange={handlesort}>
+        <select value={category} onChange={handlesort} style={{height:"32px",width:"140px",margin:"25px 0px 20px  250px"}}>
            <option value="none">Select</option>
             <option value="Rating">Rating</option>
             <option value="Price :Low to High">Price :Low to High</option>
             <option value="Price :High to Low">Price :High to Low</option>
 
-          </select> */}
+          </select>
         </div>
         {restaurantData?.map((item, i) => {
           let cuisinestr=[]

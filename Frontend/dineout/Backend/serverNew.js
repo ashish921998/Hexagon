@@ -339,15 +339,17 @@ app.get("/users", async (req, res) => {
 });
 
 const bookingSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+  name: {
+    type: String,
     required: true,
   },
-  restaurantId: [
+  email: {
+    type: String,
+    required: true,
+  },
+  restaurantname: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "restaurant",
+      type: String,
       required: true,
     },
   ],
