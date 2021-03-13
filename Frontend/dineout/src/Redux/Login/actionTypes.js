@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  LOGIN_FAILURE,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-} from "./action";
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./action";
 
 const loginRequest = () => {
   return {
@@ -39,6 +35,4 @@ const loginFailure = (err) => {
 //     });
 // };
 
-
-
-export { loginRequest,loginFailure,loginSuccess};
+export { loginRequest, loginFailure, loginSuccess };
