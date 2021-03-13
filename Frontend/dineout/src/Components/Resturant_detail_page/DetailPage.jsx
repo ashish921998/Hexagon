@@ -54,7 +54,7 @@ export const DetailPage = () => {
                 })}
             </div>
             <div className={styles.booking_container}>
-                <Booking id={id} restaurant_name={name} />
+                <Booking id={id} name={name} />
             </div>
         </div>
     )

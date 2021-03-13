@@ -9,7 +9,7 @@ import Footer from "../Components/Footer/Footer"
 import { DetailPage } from "../Components/Resturant_detail_page/DetailPage"
 import Dineoutpay from "../Components/Bookatable/dineoutpay";
 import { BookingInfo } from "../Components/BookingInfo/BookingInfo";
-
+import Soon1 from "../Components/comingsoon/soon"
 
 const Routes = () => {
 
@@ -36,10 +36,15 @@ const Routes = () => {
           <DetailPage />
           <Footer />
         </Route>
-        <Route path="/success/:name" exact>
+        <Route path="/success" exact>
           <Navbar />
           <BookingInfo />
           <Footer />
+        </Route>
+        <Route path="/pass">
+        <Navbar />
+          <Soon1></Soon1>
+        
         </Route>
         <Route>
           <Error></Error>
