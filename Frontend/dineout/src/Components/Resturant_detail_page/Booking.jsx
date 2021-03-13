@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from "./Booking.module.css"
 import DatePicker from './Datepicker'
-import {useSelector,useHistory} from "react-redux"
+import {useSelector} from "react-redux"
+import {useHistory} from "react-router-dom"
 import { BTimePicker } from './BTimePicker'
 import axios from "axios"
 
@@ -34,7 +35,7 @@ export const Booking = (props) => {
         special: ""
     }
     const [date, setDate] = React.useState("")
-    const [total,setTotal] = React.useState()
+    const [total,setTotal] = React.useState("")
     // const [year, setYear] = React.useState("")
     const [guestCount, setGuestCount] = React.useState(0)
     const [visitor, setVisitor] = React.useState(initialData)
