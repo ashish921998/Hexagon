@@ -16,8 +16,8 @@ export const DetailPage = () => {
         item.resturant_name === name && item
     )
     ))
-    let [id] = restaurantData.map((item,i)=>item._id)
-    
+    let [id] = restaurantData.map((item, i) => item._id)
+
     console.log(id, restaurantData)
     const dispatch = useDispatch()
     React.useEffect(() => {
@@ -40,7 +40,7 @@ export const DetailPage = () => {
                 ))}
             </div>
             <div className={styles.booking_container}>
-                <Booking id={id}/>
+                <Booking id={id} restaurant_name={name} />
             </div>
         </div>
     )

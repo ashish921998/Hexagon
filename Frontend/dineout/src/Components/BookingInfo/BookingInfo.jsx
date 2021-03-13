@@ -2,9 +2,15 @@ import axios from "axios"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getusers } from "../../Redux/User/actionTypes"
+import { useParams } from 'react-router'
+
 import "./BookingInfo.css"
 import {v4 as uuid} from "uuid"
 const BookingInfo = ()=>{
+
+    const { name } = useParams()
+    console.log(name)
+
     React.useEffect(()=>{
       return axios.get("http://localhost:6878/booking")
       .then((res)=>console.log(res))
@@ -50,8 +56,12 @@ const BookingInfo = ()=>{
                 </div>
             </div><br/>
            
+
+
+
+
         </div>
     )
 }
 
-export {BookingInfo}
+export { BookingInfo }

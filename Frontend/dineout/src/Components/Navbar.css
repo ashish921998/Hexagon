@@ -84,3 +84,42 @@ a {
 .linkbtn:hover{
   background-color: rgba(202, 199, 199,0.7);
 }
+
+.userInfo{
+  display: flex;
+  margin: 0px 5px;
+}
+
+.userInfo div{
+  margin: 0 5px;
+}
+
+.userImg{
+  width: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.userDropDown{
+  font-weight: 600;
+  vertical-align: middle;
+  line-height: 32px;
+  position: relative;
+}
+
+.userDropDown_arrow{
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.dropDown_close{
+  display: none;
+}
+
+.dropDown_open{
+  display: block;
+}
+
+.dropDown{
+  
+}
