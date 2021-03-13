@@ -2,7 +2,8 @@ import React from 'react'
 import { Tabs, Tab } from "@material-ui/core"
 import styles from "./BTimePicker.module.css"
 
-export const BTimePicker = () => {
+export const BTimePicker = (props) => {
+    
     const [selectedTab, setSelectedTab] = React.useState(0)
 
     const slotArray = [
@@ -68,12 +69,12 @@ export const BTimePicker = () => {
             </Tabs>
             {
                 selectedTab === 0 && <div>
-                    {slotArray.map((item, index) => item.type === 1 ? <button id={index} className={styles.tabs_btn}>{item.time} PM</button> : null)}
+                    {slotArray.map((item, index) => item.type === 1 ? <button id={index} className={styles.tabs_btn} value={item.time} onClick={props.handletime}>{item.time} PM</button> : null)}
                 </div>
             }
             {
                 selectedTab === 1 && <div>
-                    {slotArray.map((item, index) => item.type === 2 ? <button id={index} className={styles.tabs_btn}>{item.time} PM</button> : null)}
+                    {slotArray.map((item, index) => item.type === 2 ? <button id={index} className={styles.tabs_btn} value={item.time} onClick={props.handletime}>{item.time} PM</button> : null)}
                 </div>
             }
         </div>

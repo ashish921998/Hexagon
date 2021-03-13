@@ -352,7 +352,7 @@ const bookingSchema = new mongoose.Schema({
     },
   ],
   timings: {
-    type: String,
+    type: [],
     required: true,
   },
   guest: {
@@ -372,12 +372,14 @@ const bookingSchema = new mongoose.Schema({
 const Booking = mongoose.model("booking", bookingSchema);
 
 app.post("/booking", async (req, res) => {
+  console.log(req.body)
   const booking = await Booking.create(req.body);
+ 
   res.status(201).json({ data: booking });
 });
 
 app.get("/booking", async (req, res) => {
-  const bookings = await Booking.find({}).lean().exec();
+  const bookings = await Booking.find({}).populate("restaurant").populate("user").lean().exec();
   res.status(200).json({ data: bookings });
 });
 
