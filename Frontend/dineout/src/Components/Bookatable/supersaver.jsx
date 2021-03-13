@@ -10,7 +10,7 @@ import {
   dineoutpassport_datalist,
   girf_datalist,
 } from "./Bookatable_search_list";
-// import { Tabledisplaydata } from "./Bookatable_display";
+
 import { useSelector, useDispatch } from "react-redux";
 import { getRestaurant, filterRestaurant } from "../../Redux/DetailPage/detailPageActionsTypes";
 import axios from "axios";
@@ -182,7 +182,7 @@ const Supersaver = () => {
 
 
     console.log(filtersCopy, "extra1")
-    //  setFilters(filtersCopy)
+  
     count = 0;
     index = 0;
     extra = []
@@ -206,7 +206,7 @@ const Supersaver = () => {
         setFilters(filtersCopy)
       }
       console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
+     
 
     }
     count = 0;
@@ -232,8 +232,7 @@ const Supersaver = () => {
         setFilters(filtersCopy)
       }
       console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
+   
     }
     count = 0;
     index = 0;
@@ -258,8 +257,7 @@ const Supersaver = () => {
         setFilters(filtersCopy)
       }
       console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
+     
 
     }
     count = 0;
@@ -285,7 +283,7 @@ const Supersaver = () => {
         setFilters(filtersCopy)
       }
       console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
+    
 
     }
     console.log("filters", filters)
@@ -333,8 +331,7 @@ const Supersaver = () => {
 
 
   }
-  // console.log(restaurantData)
-  // console.log(filters)
+
   return (
     <>
       <div className="Bookatable_Outerbox">

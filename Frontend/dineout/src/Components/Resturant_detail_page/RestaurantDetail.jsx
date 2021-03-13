@@ -1,10 +1,10 @@
-import React from 'react'
-import styles from "./RestaurantDetail.module.css"
+import React from "react";
+import styles from "./RestaurantDetail.module.css";
 
 export const RestaurantDetail = ({ restaurantName, image, location, timings, cuisine, averageCost }) => {
-    // console.log(timings)
     timings = timings.split(",")
     return (
+        <>
         <div className={styles.container}>
             <div className={styles.image}>
                 <img src={image} alt={restaurantName} height="400px" />
@@ -23,5 +23,8 @@ export const RestaurantDetail = ({ restaurantName, image, location, timings, cui
                 </div>
             </div>
         </div>
-    )
-}
+        <div></div>
+     
+    </>
+  );
+};

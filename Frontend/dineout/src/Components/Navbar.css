@@ -20,9 +20,9 @@
   font-size: 14px;
   border-radius: 5px;
   font-weight: 600;
-  margin-left:20px;
-  outline:none;
-  border: 1px solid rgb(252, 97, 97) ;
+  margin-left: 20px;
+  outline: none;
+  border: 1px solid rgb(252, 97, 97);
 }
 
 a {
@@ -36,16 +36,14 @@ a {
   justify-content: center;
   height: 50px;
 }
-.links>div{
+.links > div {
   display: flex;
   justify-content: center;
-
 }
-.links>div:hover{
-  font-weight:bolder;
+.links > div:hover {
+  font-weight: bolder;
   display: flex;
   justify-content: center;
-
 }
 
 .gridImg {
@@ -78,48 +76,47 @@ a {
   height: 50px;
   padding: 10px;
   color: gray;
-  font-size:18px;
+  font-size: 18px;
   margin-left: 5px;
 }
-.linkbtn:hover{
-  background-color: rgba(202, 199, 199,0.7);
+.linkbtn:hover {
+  background-color: rgba(202, 199, 199, 0.7);
 }
 
-.userInfo{
+.userInfo {
   display: flex;
   margin: 0px 5px;
 }
 
-.userInfo div{
+.userInfo div {
   margin: 0 5px;
 }
 
-.userImg{
+.userImg {
   width: 32px;
   overflow: hidden;
   border-radius: 50%;
 }
 
-.userDropDown{
+.userDropDown {
   font-weight: 600;
   vertical-align: middle;
   line-height: 32px;
   position: relative;
 }
 
-.userDropDown_arrow{
+.userDropDown_arrow {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
 
-.dropDown_close{
+.dropDown_close {
   display: none;
 }
 
-.dropDown_open{
+.dropDown_open {
   display: block;
 }
 
-.dropDown{
-  
+.dropDown {
 }

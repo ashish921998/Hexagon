@@ -21,18 +21,4 @@ const loginFailure = (err) => {
   };
 };
 
-// const login = () => (dispatch) => {
-//   dispatch(loginRequest());
-//   return axios
-//     .get("http://localhost:6878/users")
-//     .then((res) => {
-//       //   console.log(res);
-//       dispatch(loginSuccess(res.data.data));
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       dispatch(loginFailure(err));
-//     });
-// };
-
 export { loginRequest, loginFailure, loginSuccess };

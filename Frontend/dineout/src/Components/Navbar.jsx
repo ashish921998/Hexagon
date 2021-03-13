@@ -1,5 +1,4 @@
 import React from "react";
-// import { useState } from "react";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SearchIcon from "@material-ui/icons/Search";
 import "./Navbar.css";
@@ -9,8 +8,8 @@ import Modal from "@material-ui/core/Modal";
 import Google from "./Google";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
-import { useSelector } from "react-redux"
-import cx from 'classnames'
+import { useSelector } from "react-redux";
+import cx from "classnames";
 
 function getModalStyle() {
   const top = 45;
@@ -23,11 +22,8 @@ function getModalStyle() {
 }
 
 function Navbar() {
-  const isAuth = useSelector(state => state.loginDetails.isAuth)
-  const loginData = useSelector(state => state.loginDetails.loginData)
-  // console.log(loginData)
-  // console.log(isAuth)
-  // var classNames = require('classnames');
+  const isAuth = useSelector((state) => state.loginDetails.isAuth);
+  const loginData = useSelector((state) => state.loginDetails.loginData);
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: "absolute",
@@ -81,12 +77,12 @@ function Navbar() {
       <Google handleClose={handleClose} />
     </div>
   );
-  const dropDown_open = cx("dropDown_open", "dropDown")
-  const dropDown_close = cx("dropDown_open", "dropDown")
+  const dropDown_open = cx("dropDown_open", "dropDown");
+  const dropDown_close = cx("dropDown_open", "dropDown");
 
   return (
     <div>
-      <div className='fixed'>
+      <div className="fixed">
         <div className="flex">
           <img
             src="https://st1.dineout-cdn.co.in/images/uploads/misc/2019/Jul/25/website-logo.png"
@@ -105,7 +101,6 @@ function Navbar() {
                 height: "30px",
                 borderRadius: "5px",
                 paddingLeft: "30px",
-
               }}
               readonly
             />
@@ -132,13 +127,22 @@ function Navbar() {
             {isAuth ? (
               <>
                 <div className="userInfo">
-                  <div className="userImg"><img src={loginData.imageUrl} alt={loginData.name} width="32px" /></div>
-                  <div className="userDropDown" onClick={() => setState(!state)}>My account <i className="userDropDown_arrow">^</i>
+                  <div className="userImg">
+                    <img
+                      src={loginData.imageUrl}
+                      alt={loginData.name}
+                      width="32px"
+                    />
+                  </div>
+                  <div
+                    className="userDropDown"
+                    onClick={() => setState(!state)}
+                  >
+                    My account <i className="userDropDown_arrow">^</i>
                     {/* <div className={`dropDown ${state ? "dropDown_open" : ''}`}>
                       <p>Profile</p>
                       <p>Log Out</p>
                     </div> */}
-
                   </div>
                 </div>
               </>
@@ -169,14 +173,24 @@ function Navbar() {
         </div>
         <hr />
         <div className="links">
-          <div><Link to="/">Home</Link></div>
-          <div><Link to="/book">Book a table</Link></div>
-          <div><Link to="/pay">Dineout Pay</Link></div>
-          <div><Link to="/pass">Dineout Passport</Link></div>
-          <div><Link to="/success">Booking Details</Link></div>
+          <div>
+            <Link to="/">Home</Link>
+          </div>
+          <div>
+            <Link to="/book">Book a table</Link>
+          </div>
+          <div>
+            <Link to="/pay">Dineout Pay</Link>
+          </div>
+          <div>
+            <Link to="/pass">Dineout Passport</Link>
+          </div>
+          <div>
+            <Link to="/success">Booking Details</Link>
+          </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 

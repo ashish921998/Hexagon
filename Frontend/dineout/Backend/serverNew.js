@@ -127,7 +127,6 @@ app.patch("/restaurants/:id", async (req, res) => {
     .populate("features")
     .lean()
     .exec();
-  // console.log(booktable)
   res.status(200).json({ data: data });
 });
 const girfSchema = new mongoose.Schema({

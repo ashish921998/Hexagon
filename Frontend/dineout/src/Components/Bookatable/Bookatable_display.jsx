@@ -3,41 +3,55 @@ import { useHistory } from "react-router";
 import "./Bookatable_display.css";
 
 const Tabledisplaydata = (props) => {
-  
   console.log(props);
-  const { restaurantData,handlesort,category } = props;
+  const { restaurantData, handlesort, category } = props;
   console.log(restaurantData);
-  const history = useHistory()
-  const handleroute = (x)=>{
-    history.push(`/book/${x}`)
-  }
- 
-  console.log(restaurantData)
+  const history = useHistory();
+  const handleroute = (x) => {
+    history.push(`/book/${x}`);
+  };
+
+  console.log(restaurantData);
   return (
     <>
       <div>
-        <div style={{display:"flex",flexDirection:"row"}}>
-        <h2 style={{ marginLeft: "20px" }}>
-          Best Restaurants Near Me in Bangalore{" "}
-        </h2>
-        <select value={category} onChange={handlesort} style={{height:"32px",width:"140px",margin:"25px 0px 20px  250px"}}>
-           <option value="none">Select</option>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <h2 style={{ marginLeft: "20px" }}>
+            Best Restaurants Near Me in Bangalore{" "}
+          </h2>
+          <select
+            value={category}
+            onChange={handlesort}
+            style={{
+              height: "32px",
+              width: "140px",
+              margin: "25px 0px 20px  250px",
+            }}
+          >
+            <option value="none">Select</option>
             <option value="Rating">Rating</option>
             <option value="Price :Low to High">Price :Low to High</option>
             <option value="Price :High to Low">Price :High to Low</option>
-
           </select>
         </div>
         {restaurantData?.map((item, i) => {
-          let cuisinestr=[]
-          let cuisine = restaurantData[i].cuisines.map((item,i)=>{
-           cuisinestr.push(item.cuisine)
+          let cuisinestr = [];
+          let cuisine = restaurantData[i].cuisines.map((item, i) => {
+            cuisinestr.push(item.cuisine);
           });
-          console.log(cuisinestr.join(","))
-          let style= restaurantData[i].rating>4 ? "green":(restaurantData[i].rating>=3 && restaurantData[i].rating<4) ? "yellow":"red"
+          console.log(cuisinestr.join(","));
+          let style =
+            restaurantData[i].rating > 4
+              ? "green"
+              : restaurantData[i].rating >= 3 && restaurantData[i].rating < 4
+              ? "yellow"
+              : "red";
           return (
             <>
-              <div className="displaytable_card" onClick={()=>handleroute(item.resturant_name)}>
+              <div
+                className="displaytable_card"
+                onClick={() => handleroute(item.resturant_name)}
+              >
                 <div>
                   <img
                     className="displaytable_imagesize"
@@ -67,10 +81,7 @@ const Tabledisplaydata = (props) => {
                     {item.resturant_name}
                   </b>
                 </div>
-                <p className="displaytable_location">
-                  {" "}
-                  {item.location}
-                </p>
+                <p className="displaytable_location"> {item.location}</p>
 
                 <div className="displaytable_cuisines">
                   {" "}
@@ -84,17 +95,11 @@ const Tabledisplaydata = (props) => {
                   item.free_offer.length &&
                   item.resturant_name !== "The Big Barbeque" && (
                     <div className="displaytable_offers">{`${
-                      item.girfs.length > 0 &&
-                      item.girfs.length
+                      item.girfs.length > 0 && item.girfs.length
+                    } ${item.girfs.length > 1 ? "deals" : "deal"} and ${
+                      item.free_offer.length > 0 && item.free_offer.length
                     } ${
-                      item.girfs.length > 1 ? "deals" : "deal"
-                    } and ${
-                      item.free_offer.length > 0 &&
-                      item.free_offer.length
-                    } ${
-                      item.free_offer.length > 1
-                        ? "offers"
-                        : "offer"
+                      item.free_offer.length > 1 ? "offers" : "offer"
                     } are available`}</div>
                   )}
               </div>

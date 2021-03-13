@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Bookatable.css";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { Tabledisplaydata } from "./Bookatable_display"
+import { Tabledisplaydata } from "./Bookatable_display";
 import {
   cuisines_datalist,
   tags_datalist,
@@ -10,18 +10,26 @@ import {
   dineoutpassport_datalist,
   girf_datalist,
 } from "./Bookatable_search_list";
-// import { Tabledisplaydata } from "./Bookatable_display";
-import { useSelector, useDispatch } from "react-redux";
-import { getRestaurant, filterRestaurant } from "../../Redux/DetailPage/detailPageActionsTypes";
-import axios from "axios";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getRestaurant,
+  filterRestaurant,
+} from "../../Redux/DetailPage/detailPageActionsTypes";
+import axios from "axios";
 
 const Bookatablenew = () => {
   let d = useSelector((store) => store.restaurantDetail.restaurantData);
   const [restaurantData, setRestaurantData] = React.useState(d);
-  const [category,setCategory]=React.useState("")
+  const [category, setCategory] = React.useState("");
   const dispatch = useDispatch();
-  const [filters, setFilters] = React.useState({ cuisines: [], features: [], tags: [], dineoutpassport: [], girfs: [] })
+  const [filters, setFilters] = React.useState({
+    cuisines: [],
+    features: [],
+    tags: [],
+    dineoutpassport: [],
+    girfs: [],
+  });
   React.useEffect(() => {
     dispatch(getRestaurant());
   }, [dispatch]);
@@ -31,18 +39,19 @@ const Bookatablenew = () => {
   }, [d]);
 
   React.useEffect(() => {
-    dispatch(filterRestaurant())
-  }, [filters])
+    dispatch(filterRestaurant());
+  }, [filters]);
 
   const get = (url) => {
     return axios.get(url).then((res) => setRestaurantData(res.data.data));
   };
-  const handlesort=(e)=>{
-    setCategory(e.target.value)
-    let x = e.target.value
-    return axios.post(`http://localhost:6878/sorting`, {x:x})
-        .then((res) => setRestaurantData(res.data.data))
-  }
+  const handlesort = (e) => {
+    setCategory(e.target.value);
+    let x = e.target.value;
+    return axios
+      .post(`http://localhost:6878/sorting`, { x: x })
+      .then((res) => setRestaurantData(res.data.data));
+  };
   const [toggle1, setToggle1] = useState(false);
   const expand1 = toggle1 ? "height1" : "";
   const [toggle3, setToggle3] = useState(false);
@@ -154,8 +163,8 @@ const Bookatablenew = () => {
   const handlefilter = (e, type) => {
     let count = 0;
     let index = 0;
-    let filtersCopy = { ...filters }
-    let extra = []
+    let filtersCopy = { ...filters };
+    let extra = [];
     if (type === "cuisines") {
       for (let i = 0; i < filters["cuisines"].length; i++) {
         if (filters["cuisines"][i] === e.target.value) {
@@ -164,177 +173,149 @@ const Bookatablenew = () => {
         }
       }
       if (count === 0) {
-
-        filtersCopy["cuisines"].push(e.target.value)
-        console.log(filtersCopy, "extra0")
-      }
-      else if (count > 0) {
+        filtersCopy["cuisines"].push(e.target.value);
+        console.log(filtersCopy, "extra0");
+      } else if (count > 0) {
         for (let m = 0; m < filtersCopy["cuisines"].length; m++) {
           if (m !== index) {
-            extra.push(filtersCopy["cuisines"][m])
+            extra.push(filtersCopy["cuisines"][m]);
           }
         }
-        filtersCopy["cuisines"] = extra
-        setFilters(filtersCopy)
+        filtersCopy["cuisines"] = extra;
+        setFilters(filtersCopy);
       }
     }
-    console.log(e.target.checked)
+    console.log(e.target.checked);
 
-
-    console.log(filtersCopy, "extra1")
-    //  setFilters(filtersCopy)
+    console.log(filtersCopy, "extra1");
     count = 0;
     index = 0;
-    extra = []
+    extra = [];
     if (type === "features") {
       for (let i = 0; i < filters["features"].length; i++) {
         if (filters["features"][i] === e.target.value) {
-          count++
+          count++;
         }
       }
       if (count === 0) {
-        filtersCopy["features"].push(e.target.value)
-
-      }
-      else if (count > 0) {
+        filtersCopy["features"].push(e.target.value);
+      } else if (count > 0) {
         for (let m = 0; m < filtersCopy["features"].length; m++) {
           if (m !== index) {
-            extra.push(filtersCopy["features"][m])
+            extra.push(filtersCopy["features"][m]);
           }
         }
-        filtersCopy["features"] = extra
-        setFilters(filtersCopy)
+        filtersCopy["features"] = extra;
+        setFilters(filtersCopy);
       }
-      console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
+      console.log(filtersCopy, "extra1");
     }
     count = 0;
     index = 0;
-    extra = []
+    extra = [];
     if (type === "tags") {
       for (let i = 0; i < filters["tags"].length; i++) {
         if (filters["tags"][i] === e.target.value) {
-          count++
+          count++;
         }
       }
       if (count === 0) {
-        filtersCopy["tags"].push(e.target.value)
-
-      }
-      else if (count > 0) {
+        filtersCopy["tags"].push(e.target.value);
+      } else if (count > 0) {
         for (let m = 0; m < filtersCopy["tags"].length; m++) {
           if (m !== index) {
-            extra.push(filtersCopy["tags"][m])
+            extra.push(filtersCopy["tags"][m]);
           }
         }
-        filtersCopy["tags"] = extra
-        setFilters(filtersCopy)
+        filtersCopy["tags"] = extra;
+        setFilters(filtersCopy);
       }
-      console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
+      console.log(filtersCopy, "extra1");
     }
     count = 0;
     index = 0;
-    extra = []
+    extra = [];
     if (type === "dineoutpassport") {
       for (let i = 0; i < filters["dineoutpassport"].length; i++) {
         if (filters["dineoutpassport"][i] === e.target.value) {
-          count++
+          count++;
         }
       }
       if (count === 0) {
-        filtersCopy["dineoutpassport"].push(e.target.value)
-
-      }
-      else if (count > 0) {
+        filtersCopy["dineoutpassport"].push(e.target.value);
+      } else if (count > 0) {
         for (let m = 0; m < filtersCopy["dineoutpassport"].length; m++) {
           if (m !== index) {
-            extra.push(filtersCopy["dineoutpassport"][m])
+            extra.push(filtersCopy["dineoutpassport"][m]);
           }
         }
-        filtersCopy["dineoutpassport"] = extra
-        setFilters(filtersCopy)
+        filtersCopy["dineoutpassport"] = extra;
+        setFilters(filtersCopy);
       }
-      console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
-
+      console.log(filtersCopy, "extra1");
     }
     count = 0;
     index = 0;
-    extra = []
+    extra = [];
     if (type === "girfs") {
       for (let i = 0; i < filters["girfs"].length; i++) {
         if (filters["girfs"][i] === e.target.value) {
-          count++
+          count++;
         }
       }
       if (count === 0) {
-        filtersCopy["girfs"].push(e.target.value)
-
-      }
-      else if (count > 0) {
+        filtersCopy["girfs"].push(e.target.value);
+      } else if (count > 0) {
         for (let m = 0; m < filtersCopy["girfs"].length; m++) {
           if (m !== index) {
-            extra.push(filtersCopy["girfs"][m])
+            extra.push(filtersCopy["girfs"][m]);
           }
         }
-        filtersCopy["girfs"] = extra
-        setFilters(filtersCopy)
+        filtersCopy["girfs"] = extra;
+        setFilters(filtersCopy);
       }
-      console.log(filtersCopy, "extra1")
-      // setFilters(filtersCopy)
-
+      console.log(filtersCopy, "extra1");
     }
-    console.log("filters", filters)
-    setFilters(filtersCopy)
-    console.log("filters", filters)
-    let filtersObj = {}
-    console.log("filterobj", filtersObj, filters)
-    Object.keys(filtersCopy).map(filter => {
+    console.log("filters", filters);
+    setFilters(filtersCopy);
+    console.log("filters", filters);
+    let filtersObj = {};
+    console.log("filterobj", filtersObj, filters);
+    Object.keys(filtersCopy).map((filter) => {
       //  debugger
       if (filtersCopy[filter].length > 0) {
-        filtersObj[filter] = filtersCopy[filter]
+        filtersObj[filter] = filtersCopy[filter];
       }
-
-    })
-    const sorting = (data)=>{
-     if(!category || category==="none")
-     {
-       setRestaurantData(data)
-     }
-     else if(category==="Rating")
-     {
-      data= data.sort((a,b)=>Number(b.rating) - Number(a.rating))
-       setRestaurantData(data)
-     }
-     else if(category==="High to Low")
-     {
-      data= data.sort((a,b)=>Number(b.average_cost) - Number(a.average_cost))
-       setRestaurantData(data)
-     }
-     else if(category==="Low to High")
-     {
-      data= data.sort((a,b)=>Number(a.average_cost) - Number(b.average_cost))
-       setRestaurantData(data)
-     }
-    }
+    });
+    const sorting = (data) => {
+      if (!category || category === "none") {
+        setRestaurantData(data);
+      } else if (category === "Rating") {
+        data = data.sort((a, b) => Number(b.rating) - Number(a.rating));
+        setRestaurantData(data);
+      } else if (category === "High to Low") {
+        data = data.sort(
+          (a, b) => Number(b.average_cost) - Number(a.average_cost)
+        );
+        setRestaurantData(data);
+      } else if (category === "Low to High") {
+        data = data.sort(
+          (a, b) => Number(a.average_cost) - Number(b.average_cost)
+        );
+        setRestaurantData(data);
+      }
+    };
     if (Object.keys(filtersObj).length !== 0) {
-      console.log("filterobj", "if", filtersObj)
-      
-      return axios.post(`http://localhost:6878/filters`, filtersObj)
-        .then((res) => sorting(res.data.data))
+      console.log("filterobj", "if", filtersObj);
+
+      return axios
+        .post(`http://localhost:6878/filters`, filtersObj)
+        .then((res) => sorting(res.data.data));
     } else {
-      console.log("filterobj", "else", filtersObj)
-      return dispatch(getRestaurant())
+      console.log("filterobj", "else", filtersObj);
+      return dispatch(getRestaurant());
     }
-
-
-  }
-  // console.log(restaurantData)
-  // console.log(filters)
+  };
   return (
     <>
       <div className="Bookatable_Outerbox">
@@ -371,19 +352,39 @@ const Bookatablenew = () => {
             {searchText0 === "" ? (
               <div>
                 <div className="Bookatable_div_input">
-                  <input type="checkbox" onChange={(e) => handlefilter(e, "girfs")} name="50% off Total bill" value="604a54e12867685f7c78e6e9" />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => handlefilter(e, "girfs")}
+                    name="50% off Total bill"
+                    value="604a54e12867685f7c78e6e9"
+                  />
                   50% off Total bill
                 </div>
                 <div className="Bookatable_div_input">
-                  <input type="checkbox" onChange={(e) => handlefilter(e, "girfs")} name="50% off Food bill" value="604a55082867685f7c78e6ea" />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => handlefilter(e, "girfs")}
+                    name="50% off Food bill"
+                    value="604a55082867685f7c78e6ea"
+                  />
                   50% off Food bill
                 </div>
                 <div className="Bookatable_div_input">
-                  <input type="checkbox" onChange={(e) => handlefilter(e, "girfs")} name="50% off Alchohol bill" value="604a552a2867685f7c78e6eb" />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => handlefilter(e, "girfs")}
+                    name="50% off Alchohol bill"
+                    value="604a552a2867685f7c78e6eb"
+                  />
                   50% off Alchohol bill
                 </div>
                 <div className="Bookatable_div_input">
-                  <input type="checkbox" onChange={(e) => handlefilter(e, "girfs")} name="50% off Lunch Buffet" value="604a55972867685f7c78e6ec" />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => handlefilter(e, "girfs")}
+                    name="50% off Lunch Buffet"
+                    value="604a55972867685f7c78e6ec"
+                  />
                   50% off Lunch Buffet
                 </div>
               </div>
@@ -392,7 +393,12 @@ const Bookatablenew = () => {
                 {data0.map((d, i) => {
                   return (
                     <div key={i} className="Bookatable_div_input">
-                      <input type="checkbox" onChange={(e) => handlefilter(e, "girfs")} name={d.list} value={d.id} />
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handlefilter(e, "girfs")}
+                        name={d.list}
+                        value={d.id}
+                      />
                       {d.list}
                     </div>
                   );
@@ -401,15 +407,23 @@ const Bookatablenew = () => {
             )}
           </div>
 
-          <div className="Cuisuines" style={{border:"1px solid gray",
-    backgroundColor: "white",width:"100%",height:"40px",lineHeight:"230%"}}>
+          <div
+            className="Cuisuines"
+            style={{
+              border: "1px solid gray",
+              backgroundColor: "white",
+              width: "100%",
+              height: "40px",
+              lineHeight: "230%",
+            }}
+          >
             <div className="QuickFilters_text">Cuisines</div>
             <div
               className="QuickFilters_Addicon"
               onClick={() => {
                 setToggle3(!toggle3);
               }}
-              style={{lineHeight:"300%"}}
+              style={{ lineHeight: "300%" }}
             >
               {!toggle3 ? <AddIcon /> : <RemoveIcon />}
             </div>
@@ -429,32 +443,39 @@ const Bookatablenew = () => {
                 <div className="Bookatable_div_input">
                   <input
                     type="checkbox"
-                    onChange={(e) => handlefilter(e, "cuisines")} name="North Indian" value="604a538b2867685f7c78e6e4"
+                    onChange={(e) => handlefilter(e, "cuisines")}
+                    name="North Indian"
+                    value="604a538b2867685f7c78e6e4"
                   />
                   North Indian
                 </div>
                 <div className="Bookatable_div_input">
                   <input
                     type="checkbox"
-                    onChange={(e) => handlefilter(e, "cuisines")} name="Fast Foods" value="604a53c52867685f7c78e6e7"
+                    onChange={(e) => handlefilter(e, "cuisines")}
+                    name="Fast Foods"
+                    value="604a53c52867685f7c78e6e7"
                   />
                   Fast Foods
                 </div>
                 <div className="Bookatable_div_input">
                   <input
                     type="checkbox"
-                    onChange={(e) => handlefilter(e, "cuisines")} name="Chinese" value="604a53982867685f7c78e6e5"
+                    onChange={(e) => handlefilter(e, "cuisines")}
+                    name="Chinese"
+                    value="604a53982867685f7c78e6e5"
                   />
                   Chinese
                 </div>
                 <div className="Bookatable_div_input">
                   <input
                     type="checkbox"
-                    onChange={(e) => handlefilter(e, "cuisines")} name="Multi-Cuisine" value="604a53ae2867685f7c78e6e6"
+                    onChange={(e) => handlefilter(e, "cuisines")}
+                    name="Multi-Cuisine"
+                    value="604a53ae2867685f7c78e6e6"
                   />
                   Multi-Cuisine
                 </div>
-
               </div>
             ) : (
               <div>
@@ -474,15 +495,23 @@ const Bookatablenew = () => {
               </div>
             )}
           </div>
-          <div className="Tags" style={{border:"1px solid gray",
-    backgroundColor: "white",width:"100%",height:"40px",lineHeight:"230%"}}>
-            <div className="QuickFilters_text"  >Tags</div>
+          <div
+            className="Tags"
+            style={{
+              border: "1px solid gray",
+              backgroundColor: "white",
+              width: "100%",
+              height: "40px",
+              lineHeight: "230%",
+            }}
+          >
+            <div className="QuickFilters_text">Tags</div>
             <div
               className="QuickFilters_Addicon"
               onClick={() => {
                 setToggle4(!toggle4);
               }}
-              style={{lineHeight:"300%"}}
+              style={{ lineHeight: "300%" }}
             >
               {!toggle4 ? <AddIcon /> : <RemoveIcon />}
             </div>
@@ -554,20 +583,28 @@ const Bookatablenew = () => {
               </div>
             )}
           </div>
-          <div className="Features" style={{border:"1px solid gray",
-    backgroundColor: "white",width:"100%",height:"40px",lineHeight:"230%"}} >
+          <div
+            className="Features"
+            style={{
+              border: "1px solid gray",
+              backgroundColor: "white",
+              width: "100%",
+              height: "40px",
+              lineHeight: "230%",
+            }}
+          >
             <div className="QuickFilters_text">Features</div>
             <div
               className="QuickFilters_Addicon"
               onClick={() => {
                 setToggle5(!toggle5);
               }}
-              style={{lineHeight:"300%"}}
+              style={{ lineHeight: "300%" }}
             >
               {!toggle5 ? <AddIcon /> : <RemoveIcon />}
             </div>
           </div>
-          <div className={`navBox ${expand5}`} >
+          <div className={`navBox ${expand5}`}>
             <div className="Bookatable_search">
               <input
                 className="Bookatable_filter_input"
@@ -578,8 +615,8 @@ const Bookatablenew = () => {
               />
             </div>
             {searchText4 === "" ? (
-              <div >
-                <div className="Bookatable_div_input" >
+              <div>
+                <div className="Bookatable_div_input">
                   <input
                     type="checkbox"
                     onChange={(e) => handlefilter(e, "features")}
@@ -615,7 +652,6 @@ const Bookatablenew = () => {
                   />
                   Parking
                 </div>
-                
               </div>
             ) : (
               <div>
@@ -635,20 +671,29 @@ const Bookatablenew = () => {
               </div>
             )}
           </div>
-          <div className="Dineoutpassport" style={{border:"1px solid gray",
-    backgroundColor: "white",width:"100%",height:"40px",lineHeight:"230%",borderRadius:"0px  0px 15px 15px"}} >
-            <div className="QuickFilters_text" >Dineout Passport</div>
+          <div
+            className="Dineoutpassport"
+            style={{
+              border: "1px solid gray",
+              backgroundColor: "white",
+              width: "100%",
+              height: "40px",
+              lineHeight: "230%",
+              borderRadius: "0px  0px 15px 15px",
+            }}
+          >
+            <div className="QuickFilters_text">Dineout Passport</div>
             <div
               className="QuickFilters_Addicon"
               onClick={() => {
                 setToggle6(!toggle6);
               }}
-              style={{lineHeight:"300%"}}
+              style={{ lineHeight: "300%" }}
             >
               {!toggle6 ? <AddIcon /> : <RemoveIcon />}
             </div>
           </div>
-          <div className={`navBox ${expand6}`} >
+          <div className={`navBox ${expand6}`}>
             <div className="Bookatable_search">
               <input
                 className="Bookatable_filter_input"
@@ -696,14 +741,14 @@ const Bookatablenew = () => {
                   />
                   Happy Hours
                 </div>
-
               </div>
             ) : (
               <div>
                 {data5.map((d, i) => {
                   return (
                     <div key={i} className="Bookatable_div_input">
-                      <input type="checkbox"
+                      <input
+                        type="checkbox"
                         onChange={(e) => handlefilter(e, "dineoutpassport")}
                         name={d.list}
                         value={d.id}
@@ -717,7 +762,11 @@ const Bookatablenew = () => {
           </div>
         </div>
         <div className="Bookatable_innerbox2">
-          <Tabledisplaydata restaurantData={restaurantData} handlesort={handlesort} category={category}/>
+          <Tabledisplaydata
+            restaurantData={restaurantData}
+            handlesort={handlesort}
+            category={category}
+          />
         </div>
       </div>
     </>

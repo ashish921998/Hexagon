@@ -30,7 +30,6 @@ const getRestaurant = () => (dispatch) => {
   return axios
     .get("http://localhost:6878/restaurants")
     .then((res) => {
-      //   console.log(res);
       dispatch(getRestaurantSuccess(res.data.data));
     })
     .catch((err) => {
@@ -44,7 +43,6 @@ const filterRestaurant = () => (dispatch) => {
   return axios
     .get("http://localhost:6878/filters")
     .then((res) => {
-      //   console.log(res);
       dispatch(getRestaurantSuccess(res.data.data));
     })
     .catch((err) => {
