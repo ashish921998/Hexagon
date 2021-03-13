@@ -2,10 +2,12 @@ import axios from "axios"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getusers } from "../../Redux/User/actionTypes"
+import { useParams } from 'react-router'
 
+const BookingInfo = () => {
+    const { name } = useParams()
+    console.log(name)
 
-const BookingInfo = ()=>{
-    
     // const details = useSelector((store)=>store.loginDetails.loginData)
     // const userdetails = useSelector((store)=>store.userDetails.userData)
     // let userId=""
@@ -20,17 +22,17 @@ const BookingInfo = ()=>{
     //     }
     // }
     // console.log(userdetails)
-    React.useEffect(()=>{
-      return axios.get("http://localhost:6878/booking")
-      .then((res)=>console.log(res))
-    },[])
-    return(
-        <div style={{marginTop:"150px"}}>
+    React.useEffect(() => {
+        return axios.get("http://localhost:6878/booking")
+            .then((res) => console.log(res))
+    }, [])
+    return (
+        <div style={{ marginTop: "150px" }}>
             <div>
-                {}
+                { }
             </div>
         </div>
     )
 }
 
-export {BookingInfo}
+export { BookingInfo }
