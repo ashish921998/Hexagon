@@ -3,6 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import axios from "axios"
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../Redux/Login/actionTypes";
+import { getusers } from "../Redux/User/actionTypes";
 
 function Google({ handleClose }) {
   const [des, setDes] = React.useState("")
@@ -18,7 +19,7 @@ function Google({ handleClose }) {
           dispatch(loginSuccess(res.profileObj))
           setDes(res)
           return axios.post("http://localhost:6878/users", res.profileObj)
-            .then((res) => console.log(res))
+            .then((res) => dispatch(getusers()))
         }}
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
