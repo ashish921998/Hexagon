@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from "./Booking.module.css"
 import DatePicker from './Datepicker'
-import {useSelector} from "react-redux"
-import {useHistory} from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { BTimePicker } from './BTimePicker'
 import axios from "axios"
 
@@ -11,23 +11,21 @@ export const Booking = (props) => {
     console.log(props.id)
     // const [month, setMonth] = React.useState("")
     // const [day, setDay] = React.useState("")
-    const details = useSelector((store)=>store.loginDetails.loginData)
-    const userdetails = useSelector((store)=>store.userDetails.userData)
-    const history=useHistory()
+    const details = useSelector((store) => store.loginDetails.loginData)
+    const userdetails = useSelector((store) => store.userDetails.userData)
+    const history = useHistory()
     // let userId=Object.values(userdetails).filter(val=> val === details.googleId) 
-    let userId=""
-    for(let key in userdetails)
-    {
-        if(userdetails[key].googleId===details.googleId)
-        {
+    let userId = ""
+    for (let key in userdetails) {
+        if (userdetails[key].googleId === details.googleId) {
             userId = userdetails[key]._id
         }
-        else{
+        else {
             console.log(userdetails[key].name)
         }
     }
     console.log(userdetails)
-    console.log(details.googleId,details.email)
+    console.log(details.googleId, details.email)
     const initialData = {
         name: details.name,
         mobile: "",
@@ -35,11 +33,11 @@ export const Booking = (props) => {
         special: ""
     }
     const [date, setDate] = React.useState("")
-    const [total,setTotal] = React.useState("")
+    const [total, setTotal] = React.useState("")
     // const [year, setYear] = React.useState("")
     const [guestCount, setGuestCount] = React.useState(0)
     const [visitor, setVisitor] = React.useState(initialData)
-    const [timearr,setTimearr]= React.useState([])
+    const [timearr, setTimearr] = React.useState([])
     const selectedDay = (val) => {
         // console.log(val)
         let date = val.toString().split(" ")
@@ -62,25 +60,25 @@ export const Booking = (props) => {
             }
         }
     }
-    const handletime = (e)=>{
-     setTimearr([...timearr,e.target.value])
+    const handletime = (e) => {
+        setTimearr([...timearr, e.target.value])
     }
     const visitorData = (e) => {
         let { name, value } = e.target
         setVisitor({ ...visitor, [name]: value })
     }
     let cont = {}
-    const handlecontinue=(e)=>{
+    const handlecontinue = (e) => {
         cont["userId"] = userId
-       cont["restaurantId"]= props.id
-       cont["timings"]=timearr
-       cont["guest"]=guestCount
-       cont["specialRequest"]=visitor.special
-       cont["mobile"]=visitor.mobile
-       console.log(cont)
-       
-       return axios.post("http://localhost:6878/booking",cont)
-       .then((res)=>history.push("/success"))
+        cont["restaurantId"] = [props.id]
+        cont["timings"] = timearr
+        cont["guest"] = guestCount
+        cont["specialRequest"] = visitor.special
+        cont["mobile"] = visitor.mobile
+        console.log(cont)
+
+        return axios.post("http://localhost:6878/booking", cont)
+            .then((res) => history.push(`/success/:${props.restaurant_name}`))
     }
     console.log(visitor)
     console.log(timearr)
@@ -107,7 +105,7 @@ export const Booking = (props) => {
                     <p>Choose an available time slot</p>
                 </div>
                 <div className={styles.slots_header}>
-                    <BTimePicker handletime={handletime}/>
+                    <BTimePicker handletime={handletime} />
                 </div>
                 <div className={styles.guest_details}>
                     <p>Select Guest/s</p>
