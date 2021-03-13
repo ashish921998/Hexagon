@@ -3,7 +3,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-} from "./detailPageActions";
+} from "./action";
 
 const loginRequest = () => {
   return {
