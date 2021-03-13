@@ -2,17 +2,16 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Error from "../Components/404/404";
-import Navbar from "../Components/Navbar"
-import Bookatablenew from "../Components/Bookatable/Bookatablenew"
-import Landing from "../Components/Landing"
-import Footer from "../Components/Footer/Footer"
-import { DetailPage } from "../Components/Resturant_detail_page/DetailPage"
+import Navbar from "../Components/Navbar";
+import Bookatablenew from "../Components/Bookatable/Bookatablenew";
+import Landing from "../Components/Landing";
+import Footer from "../Components/Footer/Footer";
+import { DetailPage } from "../Components/Resturant_detail_page/DetailPage";
 import Dineoutpay from "../Components/Bookatable/dineoutpay";
 import { BookingInfo } from "../Components/BookingInfo/BookingInfo";
-import Soon1 from "../Components/comingsoon/soon"
+import Soon1 from "../Components/comingsoon/soon";
 
 const Routes = () => {
-
   return (
     <>
       <Switch>
@@ -42,9 +41,8 @@ const Routes = () => {
           <Footer />
         </Route>
         <Route path="/pass">
-        <Navbar />
+          <Navbar />
           <Soon1></Soon1>
-        
         </Route>
         <Route>
           <Error></Error>
@@ -54,4 +52,4 @@ const Routes = () => {
   );
 };
 
-export default Routes
+export default Routes;

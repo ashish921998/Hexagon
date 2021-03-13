@@ -1,14 +1,13 @@
-.container{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 130px;
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 130px;
 }
 
-.booking_container{
-    position: absolute;
+.booking_container {
+  position: absolute;
 }
 
-.restaurant_Detail{
-    
+.restaurant_Detail {
 }
