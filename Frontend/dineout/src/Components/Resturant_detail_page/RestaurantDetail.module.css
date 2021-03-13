@@ -1,0 +1,30 @@
+.container{
+    width: 50%;
+    margin: 12px;
+    margin-left: 150px;
+    margin-right: 30px;
+    background-color: #fff;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image{
+    width: 100%;
+}
+.image img{
+    width: 850px;
+}
+.info_header{
+    padding: 5px;
+}
+.info_header h1{
+    font-size: 22px;
+    margin: 0;
+}
+
+.info_header p{
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+}

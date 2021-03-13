@@ -1,0 +1,39 @@
+.freeOfferContainer {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  background-image: -webkit-linear-gradient(left, #fff 0, #fff5da 100%);
+  background: linear-gradient(to right, #fff 0, #fff5da 100%);
+  border: 1px solid #f4d6d4;
+  border-radius: 4px;
+  align-items: center;
+  padding: 0px 15px;
+  justify-content: space-between;
+}
+
+.btnUnselected {
+  background-color: #3595ff;
+  border: 1px solid #3595ff;
+  border-radius: 20px;
+  padding: 5px 5px;
+  color: #fff;
+  font-weight: 700;
+  min-width: 100px;
+}
+.btnUnselected:focus,
+.btnSelected:focus {
+  outline: none;
+}
+.btnSelected {
+  background-color: #00c24f;
+  border: 1px solid #00c24f;
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: #fff;
+  font-weight: 700;
+  min-width: 100px;
+}
+
+.freeOfferContainer h4 {
+  color: #c29400;
+}

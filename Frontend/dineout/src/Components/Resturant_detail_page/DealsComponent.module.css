@@ -1,0 +1,84 @@
+.deals_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  border: 1px solid red;
+  position: relative;
+  background: linear-gradient(to right, #ffd9e0 0%, #ffffff 100%);
+  border-color: #f4d6d4;
+  margin: 0 5px 20px 15px;
+  border-radius: 4px;
+}
+.deal_compliment {
+  position: absolute;
+  left: 35px;
+  top: -19px;
+  z-index: 10;
+}
+.offer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.offer_content * {
+  margin: 5px;
+  padding: 5px;
+  flex-grow: 1;
+}
+.offer_content h5 {
+  font-size: 16px;
+  color: #141723;
+}
+.offer_content p {
+  font-size: 14px;
+  color: #333;
+}
+.offer_logo {
+  margin: 15px 10px;
+}
+.offer_button {
+  margin-left: 20px;
+}
+.offer_button p {
+  margin: 3px;
+  font-size: 12px;
+  color: #757575;
+  margin-left: 20px;
+}
+.offer_button_info {
+  margin-top: 10px;
+  vertical-align: middle;
+}
+.offer_button_from {
+  margin-left: 20px;
+  justify-content: end;
+  font-size: 10px;
+  line-height: 1;
+  vertical-align: middle;
+  color: #757575;
+}
+.offer_button_price {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+.offer_button_component {
+  font-size: 12px;
+  line-height: 32px;
+  margin: 5px 0;
+  border: 1px solid #fa5757;
+  border-radius: 3px;
+  min-width: 75px;
+  background-color: #ffffff;
+  color: #fa5757;
+  font-weight: 700;
+}
+.offer_button_component:hover {
+  background-color: #fa5757;
+  color: #ffffff;
+}
+.offer_qty {
+  color: #fa5757 !important;
+  font-weight: 700;
+}

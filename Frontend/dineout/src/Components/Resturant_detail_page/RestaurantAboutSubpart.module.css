@@ -1,0 +1,26 @@
+.subPart_container {
+  margin: 0 0 15px;
+  display: flex;
+}
+
+.subPar_logo {
+  width: 32px;
+  margin-right: 15px;
+}
+
+.subPar_logo img {
+  width: 100%;
+  height: auto;
+}
+
+.subpart_info * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.subpart_info h4 {
+  font-size: 14px;
+  color: #ac8e48;
+  padding: 2px 0;
+}

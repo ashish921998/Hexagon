@@ -1,0 +1,47 @@
+.offerContainer {
+  width: 50%;
+  margin: 12px;
+  margin-left: 150px;
+  margin-right: 30px;
+  display: block;
+}
+
+.offerMenu ul {
+  list-style: none;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  padding: 0;
+}
+.offerMenu ul li {
+  border-right: 1px solid #f5f5f6;
+}
+.offerMenu ul li:last-child {
+  border-right: none;
+}
+.offerMenu ul li a {
+  text-decoration: none;
+  color: #202020;
+  display: inline-block;
+  border-bottom: 5px solid #fff;
+  padding: 10px 20px 8px;
+  font-weight: 500;
+}
+.deal {
+  background-color: #fff;
+}
+.deal_heading {
+  height: 20px;
+  background-color: #e0af17;
+  background-image: -webkit-linear-gradient(left, #e0af17 0, #fff 100%);
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+  padding: 6px 0px 6px 15px;
+  color: #fff;
+  font-weight: 600;
+}
+.deal_tag h3 {
+  font-size: 18px;
+  padding-bottom: 12px;
+  margin-left: 15px;
+}

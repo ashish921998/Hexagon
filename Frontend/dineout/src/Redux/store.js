@@ -1,7 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import { restaurantDetailReducer } from "./DetailPage/detailPageReducer";
+import { loginReducer } from "./Login/reducer";
+import { UserReducer } from "./User/reducer";
 
-const rootReducer = combineReducers({ redcuers });
+const rootReducer = combineReducers({
+  restaurantDetail: restaurantDetailReducer,
+  loginDetails:loginReducer,
+  userDetails:UserReducer
+});
 
 let composeEnhancers = compose;
 
