@@ -23,21 +23,35 @@ export const DetailPage = () => {
     React.useEffect(() => {
         dispatch(getRestaurant())
     }, [])
-
+    let cuisinestr = []
+    let cuisine = []
     return (
         <div className={styles.container}>
             <div style={{ width: "100%" }} className={styles.restaurant_Detail}>
-                {restaurantData.map((restaurant) => (
-                    <div key={restaurant.id}>
-                        <RestaurantDetail key={restaurant.id} restaurantName={restaurant.resturant_name} image={restaurant.image} location={restaurant.location} timings={restaurant.timings} cuisine={restaurant.cuisines} averageCost={restaurant.average_cost} />
-                        <OffersPage key={restaurant.id} freeOffers={restaurant.free_offer} />
-                        <MenuRestaurant key={restaurant.id} menuImage={restaurant.menu_images} menuLength={1} />
-                        <RestaurantAbout key={restaurant.id}>
-                            {restaurant.about && <p>{restaurant.about}</p>}
-                            <RestaurantAboutSubpart type={"cuisine"} />
-                        </RestaurantAbout>
-                    </div>
-                ))}
+
+                {restaurantData.map((restaurant, i) => {
+                    let cuisinestr = []
+                    let cuisine = restaurantData[i].cuisines.map((item, i) => (
+                        cuisinestr.push(item.cuisine)
+                    ));
+                    let typestr = []
+                    let type = restaurantData[i].tags.map((item, i) => (
+                        typestr.push(item.tag)
+                    ));
+                    return (
+                        <div key={restaurant.id}>
+                            <RestaurantDetail key={restaurant.id} restaurantName={restaurant.resturant_name} image={restaurant.image} location={restaurant.location} timings={restaurant.timings} cuisine={restaurant.cuisines} averageCost={restaurant.average_cost} />
+                            <OffersPage key={restaurant.id} freeOffers={restaurant.free_offer} />
+                            <MenuRestaurant key={restaurant.id} menuImage={restaurant.menu_images} menuLength={1} />
+                            <RestaurantAbout key={restaurant.id}>
+                                {restaurant.about && <p>{restaurant.about}</p>}
+                                <RestaurantAboutSubpart type={"cuisine"} cuisine={cuisinestr} />
+                                <RestaurantAboutSubpart type={"tag"} cuisine={typestr} />
+                                {/* <RestaurantAboutSubpart type={"tag"} cuisine={typestr} /> */}
+                            </RestaurantAbout>
+                        </div>
+                    )
+                })}
             </div>
             <div className={styles.booking_container}>
                 <Booking id={id} restaurant_name={name} />
