@@ -173,7 +173,7 @@ function Navbar() {
           <div><Link to="/book">Book a table</Link></div>
           <div><Link to="/pay">Dineout Pay</Link></div>
           <div><Link to="/pass">Dineout Passport</Link></div>
-          <div><Link to="/success">Booking Details</Link></div>
+          <div><Link to="/success/:name">Booking Details</Link></div>
         </div>
       </div>
     </div >
