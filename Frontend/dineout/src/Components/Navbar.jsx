@@ -2,13 +2,15 @@ import React from "react";
 // import { useState } from "react";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SearchIcon from "@material-ui/icons/Search";
-import styles from "./Navbar.module.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Google from "./Google";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
+import { useSelector } from "react-redux"
+import cx from 'classnames'
 
 function getModalStyle() {
   const top = 45;
@@ -21,6 +23,11 @@ function getModalStyle() {
 }
 
 function Navbar() {
+  const isAuth = useSelector(state => state.loginDetails.isAuth)
+  const loginData = useSelector(state => state.loginDetails.loginData)
+  // console.log(loginData)
+  // console.log(isAuth)
+  // var classNames = require('classnames');
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: "absolute",
@@ -43,7 +50,6 @@ function Navbar() {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [state, setState] = useState(false);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -72,13 +78,16 @@ function Navbar() {
       </button>
       <br />
       <span style={{ margin: "10px auto" }}>or login via</span>
-      <Google />
+      <Google handleClose={handleClose} />
     </div>
   );
+  const dropDown_open = cx("dropDown_open", "dropDown")
+  const dropDown_close = cx("dropDown_open", "dropDown")
+
   return (
     <div>
-      <div className={styles.fixed}>
-        <div className={styles.flex}>
+      <div className='fixed'>
+        <div className="flex">
           <img
             src="https://st1.dineout-cdn.co.in/images/uploads/misc/2019/Jul/25/website-logo.png"
             alt="dineout"
@@ -96,7 +105,7 @@ function Navbar() {
                 height: "30px",
                 borderRadius: "5px",
                 paddingLeft: "30px",
-               
+
               }}
               readonly
             />
@@ -116,16 +125,27 @@ function Navbar() {
                 paddingLeft: "30px",
               }}
             />
-            <button className={styles.navbtn}>Search</button>
+            <button className="navbtn">Search</button>
           </div>
 
           <div>
-            {state ? (
-              <div>My account</div>
+            {isAuth ? (
+              <>
+                <div className="userInfo">
+                  <div className="userImg"><img src={loginData.imageUrl} alt={loginData.name} width="32px" /></div>
+                  <div className="userDropDown" onClick={() => setState(!state)}>My account <i className="userDropDown_arrow">^</i>
+                    {/* <div className={`dropDown ${state ? "dropDown_open" : ''}`}>
+                      <p>Profile</p>
+                      <p>Log Out</p>
+                    </div> */}
+
+                  </div>
+                </div>
+              </>
             ) : (
               <div>
                 <button
-                  className={styles.navbtn}
+                  className="navbtn"
                   onClick={handleOpen}
                   style={{ marginLeft: "15px" }}
                 >
@@ -148,7 +168,7 @@ function Navbar() {
           </div>
         </div>
         <hr />
-        <div className={styles.links}>
+        <div className="links">
           <div><Link to="/">Home</Link></div>
           <div><Link to="/book">Book a table</Link></div>
           <div><Link to="/pay">Dineout Pay</Link></div>
@@ -156,7 +176,7 @@ function Navbar() {
           <div><Link to="/super">Super Saver</Link></div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
