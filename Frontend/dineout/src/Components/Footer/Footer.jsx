@@ -153,10 +153,10 @@ const Footer = () => {
               }}
             >
               {[
-                "https://www.flaticon.com/svg/vstatic/svg/2111/2111463.svg?token=exp=1615547947~hmac=86f923c453c54b6c7aa6a67bc6834670",
-                "https://www.flaticon.com/svg/vstatic/svg/733/733547.svg?token=exp=1615548145~hmac=fd504f699dd5f4125acc0756148aac13",
-                "https://www.flaticon.com/svg/vstatic/svg/2111/2111748.svg?token=exp=1615548233~hmac=f7756e5c50e2e2b3f0c6b22b21320507",
-                "https://www.flaticon.com/svg/vstatic/svg/889/889147.svg?token=exp=1615548291~hmac=5c7b4e8d18a3198edcabd8dd68868c41",
+                "https://1.bp.blogspot.com/-qdRfUNOtjkM/XeI_00z9pzI/AAAAAAAAF4E/FeD2SvVFnKUjPAKQ_cNM6-D2ahjKb0HkQCLcBGAsYHQ/s1600/Youtube-Icon-square-2340x2340-2.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1024px-Facebook_icon.svg.png",
+                "https://logo-logos.com/wp-content/uploads/2016/10/Instagram_logo_icon.png",
+                "https://th.bing.com/th/id/Rba9b117ff54a48bd2c403003c72f3ba0?rik=%2bSzQteWIuhTbww&riu=http%3a%2f%2fwww.pressassociation.com%2fwp-content%2fthemes%2fbridge-child%2fimages%2fTwitter_Logo_Blue.png&ehk=ZkfnOBplQQxgFBPZtDuoeAzxGfNaS25PGTylU9rfEVI%3d&risl=&pid=ImgRaw",
               ].map((item) => (
                 <img
                   style={{ height: "30px", width: "30px", marginRight: "10px" }}
