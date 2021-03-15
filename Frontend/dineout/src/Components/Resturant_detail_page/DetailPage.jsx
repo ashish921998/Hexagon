@@ -24,6 +24,15 @@ export const DetailPage = () => {
   React.useEffect(() => {
     dispatch(getRestaurant());
   }, []);
+
+  // React.useEffect(() => {
+  //   document.title = `${}`
+  // })
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   let cuisinestr = [];
   let cuisine = [];
   return (

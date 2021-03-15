@@ -253,50 +253,112 @@ app.post("/filters", async (req, res) => {
 });
 //sorting
 app.post("/sorting", async (req, res) => {
-  console.log(req.body["x"]);
+  // console.log(req.body);
+  let queryObj = [];
+  Object.keys(req.body.categories).map((key) => {
+    if (req.body.categories[key].length > 0) {
+      let queryArray = [];
+      for (let i = 0; i < req.body.categories[key].length; i++) {
+        queryArray.push({ [key]: req.body.categories[key][i] });
+      }
+      let queryOrObject = { $or: queryArray };
+      queryObj.push(queryOrObject);
+    }
+  });
   if (req.body["x"] === "Price :Low to High") {
-    const datas = await Restaurant.find({})
-      .sort({ average_cost: 1 })
-      .populate("girfs")
-      .populate("cuisines")
-      .populate("tags")
-      .populate("dineoutpassport")
-      .populate("features")
-      .lean()
-      .exec();
-    res.status(200).json({ data: datas });
+    if (queryObj.length === 0) {
+      const datas = await Restaurant.find({})
+        .sort({ average_cost: 1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    } else {
+      const datas = await Restaurant.find({ $and: queryObj })
+        .sort({ average_cost: 1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    }
   } else if (req.body["x"] === "Price :High to Low") {
-    const datas = await Restaurant.find({})
-      .sort({ average_cost: -1 })
-      .populate("girfs")
-      .populate("cuisines")
-      .populate("tags")
-      .populate("dineoutpassport")
-      .populate("features")
-      .lean()
-      .exec();
-    res.status(200).json({ data: datas });
+    if (queryObj.length === 0) {
+      const datas = await Restaurant.find({})
+        .sort({ average_cost: -1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    } else {
+      const datas = await Restaurant.find({ $and: queryObj })
+        .sort({ average_cost: -1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    }
   } else if (req.body["x"] === "Rating") {
-    const datas = await Restaurant.find({})
-      .sort({ rating: -1 })
-      .populate("girfs")
-      .populate("cuisines")
-      .populate("tags")
-      .populate("dineoutpassport")
-      .populate("features")
-      .lean()
-      .exec();
-    res.status(200).json({ data: datas });
+    if (queryObj.length === 0) {
+      const datas = await Restaurant.find({})
+        .sort({ rating: -1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    } else {
+      const datas = await Restaurant.find({ $and: queryObj })
+        .sort({ rating: -1 })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    }
   } else if (req.body["x"] === "none") {
-    const datas = await Restaurant.find({})
-      .populate("girfs")
-      .populate("cuisines")
-      .populate("tags")
-      .populate("dineoutpassport")
-      .populate("features")
-      .lean()
-      .exec();
-    res.status(200).json({ data: datas });
+    if (queryObj.length === 0) {
+      const datas = await Restaurant.find({})
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    } else {
+      const datas = await Restaurant.find({ $and: queryObj })
+        .populate("girfs")
+        .populate("cuisines")
+        .populate("tags")
+        .populate("dineoutpassport")
+        .populate("features")
+        .lean()
+        .exec();
+      res.status(200).json({ data: datas });
+    }
   }
 });
 //google

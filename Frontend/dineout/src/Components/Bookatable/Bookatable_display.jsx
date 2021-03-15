@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import "./Bookatable_display.css";
 
 const Tabledisplaydata = (props) => {
-  console.log(props);
+  // console.log(props);
   const { restaurantData, handlesort, category } = props;
   console.log(restaurantData);
   const history = useHistory();
@@ -44,8 +44,8 @@ const Tabledisplaydata = (props) => {
             restaurantData[i].rating > 4
               ? "green"
               : restaurantData[i].rating >= 3 && restaurantData[i].rating < 4
-              ? "yellow"
-              : "red";
+                ? "yellow"
+                : "red";
           return (
             <>
               <div
@@ -94,13 +94,10 @@ const Tabledisplaydata = (props) => {
                 {item.girfs.length > 0 &&
                   item.free_offer.length &&
                   item.resturant_name !== "The Big Barbeque" && (
-                    <div className="displaytable_offers">{`${
-                      item.girfs.length > 0 && item.girfs.length
-                    } ${item.girfs.length > 1 ? "deals" : "deal"} and ${
-                      item.free_offer.length > 0 && item.free_offer.length
-                    } ${
-                      item.free_offer.length > 1 ? "offers" : "offer"
-                    } are available`}</div>
+                    <div className="displaytable_offers">{`${item.girfs.length > 0 && item.girfs.length
+                      } ${item.girfs.length > 1 ? "deals" : "deal"} and ${item.free_offer.length > 0 && item.free_offer.length
+                      } ${item.free_offer.length > 1 ? "offers" : "offer"
+                      } are available`}</div>
                   )}
               </div>
             </>
