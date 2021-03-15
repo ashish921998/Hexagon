@@ -47,9 +47,9 @@ const Bookatablenew = () => {
   };
   const handlesort = (e) => {
     setCategory(e.target.value);
-    let x = e.target.value;
+    let sortedCategory = e.target.value;
     return axios
-      .post(`http://localhost:6878/sorting`, { x: x })
+      .post(`http://localhost:6878/sorting`, {  x:sortedCategory })
       .then((res) => setRestaurantData(res.data.data));
   };
   const [toggle1, setToggle1] = useState(false);
@@ -293,12 +293,12 @@ const Bookatablenew = () => {
       } else if (category === "Rating") {
         data = data.sort((a, b) => Number(b.rating) - Number(a.rating));
         setRestaurantData(data);
-      } else if (category === "High to Low") {
+      } else if (category === "Price :High to Low") {
         data = data.sort(
           (a, b) => Number(b.average_cost) - Number(a.average_cost)
         );
         setRestaurantData(data);
-      } else if (category === "Low to High") {
+      } else if (category === "Price :Low to High") {
         data = data.sort(
           (a, b) => Number(a.average_cost) - Number(b.average_cost)
         );
