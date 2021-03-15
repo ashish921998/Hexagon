@@ -45,11 +45,24 @@ const Bookatablenew = () => {
   const get = (url) => {
     return axios.get(url).then((res) => setRestaurantData(res.data.data));
   };
+
+
   const handlesort = (e) => {
     setCategory(e.target.value);
+    let obj = {}
     let x = e.target.value;
+    let filtersObj = {};
+    // console.log("filterobj", filtersObj, filters);
+    Object.keys(filters).map((filter) => {
+      //  debugger
+      if (filters[filter].length > 0) {
+        filtersObj[filter] = filters[filter];
+      }
+    });
+    obj["x"] = x
+    obj["categories"] = filtersObj
     return axios
-      .post(`http://localhost:6878/sorting`, { x: x })
+      .post(`http://localhost:6878/sorting`, obj)
       .then((res) => setRestaurantData(res.data.data));
   };
   const [toggle1, setToggle1] = useState(false);
@@ -187,7 +200,7 @@ const Bookatablenew = () => {
     }
     console.log(e.target.checked);
 
-    console.log(filtersCopy, "extra1");
+    // console.log(filtersCopy, "extra1");
     count = 0;
     index = 0;
     extra = [];
@@ -276,11 +289,11 @@ const Bookatablenew = () => {
       }
       console.log(filtersCopy, "extra1");
     }
-    console.log("filters", filters);
+    // console.log("filters", filters);
     setFilters(filtersCopy);
-    console.log("filters", filters);
+    // console.log("filters", filters);
     let filtersObj = {};
-    console.log("filterobj", filtersObj, filters);
+    // console.log("filterobj", filtersObj, filters);
     Object.keys(filtersCopy).map((filter) => {
       //  debugger
       if (filtersCopy[filter].length > 0) {
@@ -288,17 +301,20 @@ const Bookatablenew = () => {
       }
     });
     const sorting = (data) => {
+      console.log(category)
       if (!category || category === "none") {
         setRestaurantData(data);
       } else if (category === "Rating") {
+        console.log(data)
         data = data.sort((a, b) => Number(b.rating) - Number(a.rating));
         setRestaurantData(data);
-      } else if (category === "High to Low") {
+        console.log(data)
+      } else if (category === "Price :High to Low") {
         data = data.sort(
           (a, b) => Number(b.average_cost) - Number(a.average_cost)
         );
         setRestaurantData(data);
-      } else if (category === "Low to High") {
+      } else if (category === "Price :Low to High") {
         data = data.sort(
           (a, b) => Number(a.average_cost) - Number(b.average_cost)
         );
@@ -306,13 +322,13 @@ const Bookatablenew = () => {
       }
     };
     if (Object.keys(filtersObj).length !== 0) {
-      console.log("filterobj", "if", filtersObj);
+      // console.log("filterobj", "if", filtersObj);
 
       return axios
         .post(`http://localhost:6878/filters`, filtersObj)
         .then((res) => sorting(res.data.data));
     } else {
-      console.log("filterobj", "else", filtersObj);
+      // console.log("filterobj", "else", filtersObj);
       return dispatch(getRestaurant());
     }
   };
