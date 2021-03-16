@@ -38,7 +38,7 @@ npm run server --Back End
 
 
 ## How to use the Product
-1. After Staring the Project using npm start. You will see the landing page something similar to the below image.  
+1. After Starting the Project using npm start. You will see the landing page something similar to the below image.  
 
 ![image](https://user-images.githubusercontent.com/57569434/111021305-53219980-83f1-11eb-8e48-7a2e0df873d1.png)
 
