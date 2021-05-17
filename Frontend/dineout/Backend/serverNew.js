@@ -441,8 +441,9 @@ app.post("/booking", async (req, res) => {
   res.status(201).json({ data: booking });
 });
 
-app.get("/booking", async (req, res) => {
-  const bookings = await Booking.find({})
+app.post("/booking1", async (req, res) => {
+  // console.log(req.body.email, "afhjadsf");
+  const bookings = await Booking.find({ email: req.body.email })
     .populate("restaurant")
     .populate("user")
     .lean()

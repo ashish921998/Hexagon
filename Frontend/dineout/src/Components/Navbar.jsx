@@ -124,39 +124,16 @@ function Navbar() {
           </div>
 
           <div>
-            {isAuth ? (
-              <>
-                <div className="userInfo">
-                  <div className="userImg">
-                    <img
-                      src={loginData.imageUrl}
-                      alt={loginData.name}
-                      width="32px"
-                    />
-                  </div>
-                  <div
-                    className="userDropDown"
-                    onClick={() => setState(!state)}
-                  >
-                    My account <i className="userDropDown_arrow">^</i>
-                    {/* <div className={`dropDown ${state ? "dropDown_open" : ''}`}>
-                      <p>Profile</p>
-                      <p>Log Out</p>
-                    </div> */}
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div>
-                <button
-                  className="navbtn"
-                  onClick={handleOpen}
-                  style={{ marginLeft: "15px" }}
-                >
-                  Login
-                </button>
-              </div>
-            )}
+
+            <div>
+              <button
+                className="navbtn"
+                onClick={handleOpen}
+                style={{ marginLeft: "15px" }}
+              >
+                {isAuth ? "Log Out" : "LogIn"}
+              </button>
+            </div>
           </div>
           <div>
             <div>

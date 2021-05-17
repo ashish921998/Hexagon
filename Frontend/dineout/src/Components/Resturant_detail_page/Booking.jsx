@@ -15,6 +15,7 @@ export const Booking = (props) => {
   for (let key in userdetails) {
     if (userdetails[key].googleId === details.googleId) {
       userId = userdetails[key]._id;
+      console.log(userId, "userID", details)
     } else {
       console.log(userdetails[key].name);
     }
